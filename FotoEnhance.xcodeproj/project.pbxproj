@@ -11,6 +11,13 @@
 		C72D6E06287D46210090D794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E05287D46210090D794 /* ContentView.swift */; };
 		C72D6E08287D46260090D794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72D6E07287D46260090D794 /* Assets.xcassets */; };
 		C72D6E0B287D46260090D794 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72D6E0A287D46260090D794 /* Preview Assets.xcassets */; };
+		C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = C72D6E12287D466D0090D794 /* SwiftUIX */; };
+		C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E14287D46950090D794 /* SubscriptionView.swift */; };
+		C72D6E18287D46B80090D794 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E17287D46B80090D794 /* Extensions.swift */; };
+		C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E19287D46CF0090D794 /* ImagePicker.swift */; };
+		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
+		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
+		C72D6E21287D479C0090D794 /* AESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		C72D6E05287D46210090D794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C72D6E07287D46260090D794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C72D6E0A287D46260090D794 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C72D6E14287D46950090D794 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		C72D6E17287D46B80090D794 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C72D6E19287D46CF0090D794 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C72D6E1B287D46DF0090D794 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
+		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +66,12 @@
 		C72D6E02287D46210090D794 /* FotoEnhance */ = {
 			isa = PBXGroup;
 			children = (
+				C72D6E1F287D472E0090D794 /* Info.plist */,
+				C72D6E22287D47A70090D794 /* MLModels */,
+				C72D6E16287D46A40090D794 /* ImageHelpers */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
+				C72D6E14287D46950090D794 /* SubscriptionView.swift */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
 				C72D6E09287D46260090D794 /* Preview Content */,
 			);
@@ -65,6 +84,25 @@
 				C72D6E0A287D46260090D794 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C72D6E16287D46A40090D794 /* ImageHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				C72D6E17287D46B80090D794 /* Extensions.swift */,
+				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
+				C72D6E1B287D46DF0090D794 /* ImageSaver.swift */,
+				C72D6E1D287D46EF0090D794 /* Toucan.swift */,
+			);
+			path = ImageHelpers;
+			sourceTree = "<group>";
+		};
+		C72D6E22287D47A70090D794 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */,
+			);
+			path = MLModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +121,9 @@
 			dependencies = (
 			);
 			name = FotoEnhance;
+			packageProductDependencies = (
+				C72D6E12287D466D0090D794 /* SwiftUIX */,
+			);
 			productName = FotoEnhance;
 			productReference = C72D6E00287D46210090D794 /* FotoEnhance.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +152,9 @@
 				Base,
 			);
 			mainGroup = C72D6DF7287D46210090D794;
+			packageReferences = (
+				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			productRefGroup = C72D6E01287D46210090D794 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +182,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
+				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
+				C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */,
+				C72D6E21287D479C0090D794 /* AESRGAN_8Bit.mlmodel in Sources */,
 				C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */,
+				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
+				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
+				C72D6E18287D46B80090D794 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,26 +315,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -294,26 +347,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -339,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C72D6E12287D466D0090D794 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C72D6DF8287D46210090D794 /* Project object */;
 }
