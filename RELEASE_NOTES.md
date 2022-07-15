@@ -1,4 +1,4 @@
-# Build
+# Release Notes
 The version history of FotoEnhance is listed in this document.
 
 ### v0.2 Beta
