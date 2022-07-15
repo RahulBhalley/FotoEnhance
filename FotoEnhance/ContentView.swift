@@ -166,6 +166,33 @@ struct ContentView: View {
                            .disabled(imageEnhanced ? true : false)
                 }
                 
+                Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
+                    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.1 (2)",
+                                            body: """
+                                                  🌱 Feature Request
+                                                  What new feature you'd like us to add? 😊
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  🐞 Bug
+                                                  What was the incorrect/unexpected behavior of the app?
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  💥 App Crash
+                                                  What did you do that caused the app to crash?
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  ♥️ We highly appreciate that you're taking time to write to us.
+                                                  """,
+                                            to: ["rahulbhalley@icloud.com"])
+                }
+                .applyModifiers(fontSize: 18,
+                                frameSize: (180, 40),
+                                foregroundColor: .white,
+                                backgroundColor: .indigo)
+                
                 // MARK: Enable the following code for first App Store release.
                 
                 /*Button("Unlock Pro", systemImage: SFSymbolName(rawValue: "lock.open.fill")!) {
