@@ -131,40 +131,38 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                if inputImage != nil {
-                    Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
-                           systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
-                        
-                        // Safely unwrap the image.
-                        guard let image = inputImage else {
-                            print("Image not found.")
-                            return
-                        }
-                        
-                        // Resize the input image.
-                        /*if image.isAnySideGreaterThan(length: 512) {
-                         image = image.resizeLargerSideTo(length: 512)
-                         }*/
-                        
-                        // Make image super resolution.
-                        process(inputImage: image, outputImage: &processedImage)
-                        
-                        // Display the user input image.
-                        DispatchQueue.global(qos: .userInteractive).async {
-                            imageView = Image(uiImage: processedImage!)
-                        }
-                        
-                        // Image is now enhanced.
-                        imageEnhanced = true
+                Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
+                       systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
+                    
+                    // Safely unwrap the image.
+                    guard let image = inputImage else {
+                        print("Image not found.")
+                        return
                     }
-                           .applyModifiers(fontSize: 18,
-                                           frameSize: (120, 40),
-                                           foregroundColor: .adaptable(light: .black, dark: .white),
-                                           backgroundColor: .adaptable(light: .white, dark: .black))
-                           .padding(.vertical, 10)
-                           .brightness(colorScheme == .light ? (imageEnhanced ? -0.3 : 0.0) : (imageEnhanced ? 0.3 : 0.0))
-                           .disabled(imageEnhanced ? true : false)
+                    
+                    // Resize the input image.
+                    /*if image.isAnySideGreaterThan(length: 512) {
+                     image = image.resizeLargerSideTo(length: 512)
+                     }*/
+                    
+                    // Make image super resolution.
+                    process(inputImage: image, outputImage: &processedImage)
+                    
+                    // Display the user input image.
+                    DispatchQueue.global(qos: .userInteractive).async {
+                        imageView = Image(uiImage: processedImage!)
+                    }
+                    
+                    // Image is now enhanced.
+                    imageEnhanced = true
                 }
+                       .applyModifiers(fontSize: 18,
+                                       frameSize: (120, 40),
+                                       foregroundColor: .adaptable(light: .black, dark: .white),
+                                       backgroundColor: .adaptable(light: .white, dark: .black))
+                       .padding(.vertical, 10)
+                       .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
+                       .disabled(imageEnhanced || inputImage == nil ? true : false)
                 
                 Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
                     EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.1 (Build 2)",
