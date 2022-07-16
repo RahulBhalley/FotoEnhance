@@ -4,7 +4,7 @@ The version history of FotoEnhance is listed in this document.
 ### v0.2 Beta
 
 #### Information
-* App Size: N/A ATM
+* App Size: 19.4 MB
 * Release Date: 15-07-2022
 * Build: 1
 
@@ -18,7 +18,7 @@ Thanks for testing the app! Please leave us a feedback email from within the app
 ### v0.1 Beta
 
 #### Information
-* App Size: 21.9 MB
+* App Size: 21.9 MB (might be inaccurate)
 * Release Date: 12-07-2022
 * Build: 1
 
