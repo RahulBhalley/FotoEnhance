@@ -271,7 +271,7 @@ func process(inputImage: UIImage, outputImage: inout UIImage?) {
         // MARK: Add watermark to the processed image.
         
         // Remove the watermark if user have subscription.
-        let backgroundImage = outputImage
+        /*let backgroundImage = outputImage
         let watermarkImage = UIImage(named: "Watermark")!
         
         let size = backgroundImage!.size
@@ -288,7 +288,7 @@ func process(inputImage: UIImage, outputImage: inout UIImage?) {
                                        height: 200))
         
         outputImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        UIGraphicsEndImageContext()*/
     } catch {
         print(error)
     }
