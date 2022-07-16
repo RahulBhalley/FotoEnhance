@@ -157,7 +157,7 @@ struct ContentView: View {
                     imageEnhanced = true
                 }
                        .applyModifiers(fontSize: 18,
-                                       frameSize: (120, 40),
+                                       frameSize: (130, 40),
                                        foregroundColor: .adaptable(light: .black, dark: .white),
                                        backgroundColor: .adaptable(light: .white, dark: .black))
                        .padding(.vertical, 10)
@@ -187,7 +187,7 @@ struct ContentView: View {
                                             to: ["rahulbhalley@icloud.com"])
                 }
                 .applyModifiers(fontSize: 18,
-                                frameSize: (180, 40),
+                                frameSize: (190, 40),
                                 foregroundColor: .white,
                                 backgroundColor: .indigo)
                 
