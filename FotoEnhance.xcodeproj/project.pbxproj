@@ -18,7 +18,7 @@
 		C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E19287D46CF0090D794 /* ImagePicker.swift */; };
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
-		C72D6E21287D479C0090D794 /* AESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */; };
+		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		C72D6E1B287D46DF0090D794 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
+		C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RealESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 		C72D6E22287D47A70090D794 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				C72D6E20287D479C0090D794 /* AESRGAN_8Bit.mlmodel */,
+				C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -187,8 +187,8 @@
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
 				C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */,
-				C72D6E21287D479C0090D794 /* AESRGAN_8Bit.mlmodel in Sources */,
 				C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */,
+				C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */,
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,

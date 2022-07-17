@@ -218,7 +218,7 @@ struct ContentView: View {
 func process(inputImage: UIImage, outputImage: inout UIImage?) {
     
     let inputImage512x512 = inputImage.resize(CGSize(width: 512, height: 512))
-    //    let originalImageSize = inputImage.size
+    //let originalImageSize = inputImage.size
     print("image size: \(inputImage512x512.size)")
     
     do {
@@ -230,7 +230,7 @@ func process(inputImage: UIImage, outputImage: inout UIImage?) {
         // Initialize the model.
         //let superResolutionModel = try AESRGAN_8Bit(configuration: configuration)
         //let vnCoremlModel = try VNCoreMLModel(for: AESRGAN_8Bit(configuration: configuration).model)
-        let vnCoreMlRequest = VNCoreMLRequest(model: try VNCoreMLModel(for: AESRGAN_8Bit(configuration: configuration).model))
+        let vnCoreMlRequest = VNCoreMLRequest(model: try VNCoreMLModel(for: RealESRGAN_8Bit(configuration: configuration).model))
         
         let startTime = Date().timeIntervalSince1970
         /*let prediction = try superResolutionModel
