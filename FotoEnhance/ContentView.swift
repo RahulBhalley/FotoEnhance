@@ -146,7 +146,7 @@ struct ContentView: View {
                      }*/
                     
                     // Make image super resolution.
-                    process(inputImage: image, outputImage: &processedImage)
+                    enhance(inputImage: image, outputImage: &processedImage)
                     
                     // Display the user input image.
                     DispatchQueue.global(qos: .userInteractive).async {
@@ -189,7 +189,7 @@ struct ContentView: View {
                 .applyModifiers(fontSize: 18,
                                 frameSize: (190, 40),
                                 foregroundColor: .white,
-                                backgroundColor: .indigo)
+                                backgroundColor: .mint)
                 
                 // MARK: Enable the following code for first App Store release.
                 
@@ -215,7 +215,7 @@ struct ContentView: View {
 
 // MARK: Functions
 
-func process(inputImage: UIImage, outputImage: inout UIImage?) {
+func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
     
     let inputImage512x512 = inputImage.resize(CGSize(width: 512, height: 512))
     //let originalImageSize = inputImage.size
@@ -289,6 +289,26 @@ func process(inputImage: UIImage, outputImage: inout UIImage?) {
         
         outputImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()*/
+    } catch {
+        print(error)
+    }
+}
+
+func blend(image1: UIImage,
+           image2: UIImage,
+           alpha: Float,
+           outputImage: inout UIImage?) {
+    let alpha = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
+    
+    // MLModel configuration.
+    let configuration = MLModelConfiguration()
+    configuration.computeUnits = .all
+    
+    do {
+        let blendModel = try Blend(configuration: configuration)
+        let input = BlendInput(image1: image1.pixelBuffer!, image2: image2.pixelBuffer!, alpha: alpha)
+        let blendedImage = try blendModel.prediction(input: input).blendedImage
+        outputImage = imageFromPixelBuffer(pixelBuffer: blendedImage)
     } catch {
         print(error)
     }

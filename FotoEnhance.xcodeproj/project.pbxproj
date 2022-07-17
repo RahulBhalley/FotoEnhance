@@ -19,6 +19,8 @@
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
 		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
+		C7DEDF41288467E000F77CB5 /* Blend.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF40288467E000F77CB5 /* Blend.mlmodel */; };
+		C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */ = {isa = PBXBuildFile; productRef = C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,7 @@
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RealESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
+		C7DEDF40288467E000F77CB5 /* Blend.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */,
 				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +107,7 @@
 		C72D6E22287D47A70090D794 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				C7DEDF40288467E000F77CB5 /* Blend.mlmodel */,
 				C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */,
 			);
 			path = MLModels;
@@ -126,6 +131,7 @@
 			name = FotoEnhance;
 			packageProductDependencies = (
 				C72D6E12287D466D0090D794 /* SwiftUIX */,
+				C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */,
 			);
 			productName = FotoEnhance;
 			productReference = C72D6E00287D46210090D794 /* FotoEnhance.app */;
@@ -157,6 +163,7 @@
 			mainGroup = C72D6DF7287D46210090D794;
 			packageReferences = (
 				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 			);
 			productRefGroup = C72D6E01287D46210090D794 /* Products */;
 			projectDirPath = "";
@@ -192,6 +199,7 @@
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
+				C7DEDF41288467E000F77CB5 /* Blend.mlmodel in Sources */,
 				C72D6E18287D46B80090D794 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -303,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -331,7 +339,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,7 +371,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +417,14 @@
 				kind = branch;
 			};
 		};
+		C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -416,6 +432,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			productName = PermissionsSwiftUIPhoto;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
