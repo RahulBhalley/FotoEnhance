@@ -200,22 +200,22 @@ struct ContentView: View {
                         // MARK: Feedback Button
                         
                         Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
-                            EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.2 (1)",
+                            EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.3 (1)",
                                                     body: """
                                                   🌱 Feature Request
                                                   What new feature you'd like us to add? 😊
                                                   
-                                                  >>> Explain here
+                                                  [Explain here]
                                                   
                                                   🐞 Bug
                                                   What was the incorrect/unexpected behavior of the app?
                                                   
-                                                  >>> Explain here
+                                                  [Explain here]
                                                   
                                                   💥 App Crash
                                                   What did you do that caused the app to crash?
                                                   
-                                                  >>> Explain here
+                                                  [Explain here]
                                                   
                                                   ♥️ We highly appreciate that you're taking time to write to us.
                                                   """,
