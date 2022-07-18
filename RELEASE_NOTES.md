@@ -1,6 +1,22 @@
 # Release Notes
 The version history of FotoEnhance is listed in this document.
 
+### v0.3 Beta
+* App Size: N/A
+* Release Date: 18-07-2022
+* Build: 1
+
+#### Updates
+* Updated FotoEnhance’s AI to improve the quality of enhanced image. 
+* Adjust enhancement level using a new slider! Select an image appealing to your own eyes. :)
+* Shows a new beautiful enhancement progress wheel.
+* Fixed a bug that created the enhanced image way too large.
+* Removed watermark. Remember, beta testers will get all of the features for free? Well, we do!
+
+Thanks for testing the app!
+
+Please help us improve your app experience by leaving us a feedback email from within the app. 
+
 ### v0.2 Beta
 
 #### Information
