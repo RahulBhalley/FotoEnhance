@@ -140,6 +140,78 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack {
+                    HStack {
+                        
+                        // MARK: Enhancement Button
+                        
+                        Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
+                               systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
+                            
+                            DispatchQueue.global(qos: .userInteractive).async {
+                                
+                                // Beginning enhancement process.
+                                isProcessing = true
+                                
+                                // Safely unwrap the image.
+                                guard let image = inputImage else {
+                                    print("Image not found.")
+                                    return
+                                }
+                                
+                                // Enhance the image.
+                                enhance(inputImage: image, outputImage: &processedImage)
+                                
+                                // Display the processed image.
+                                DispatchQueue.main.async {
+                                    
+                                    // Enhancement is completed.
+                                    isProcessing = false
+                                    
+                                    // Image is now enhanced.
+                                    imageEnhanced = true
+                                    
+                                    // Set the processed image to image view.
+                                    imageView = Image(uiImage: processedImage!)
+                                }
+                            }
+                        }
+                               .applyModifiers(fontSize: 18,
+                                               frameSize: (130, 40),
+                                               foregroundColor: .adaptable(light: .black, dark: .white),
+                                               backgroundColor: .adaptable(light: .white, dark: .black))
+                               .padding(.vertical, 10)
+                               .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
+                               .disabled(imageEnhanced || inputImage == nil ? true : false)
+                        
+                        // MARK: Feedback Button
+                        
+                        Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
+                            EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.2 (1)",
+                                                    body: """
+                                                  🌱 Feature Request
+                                                  What new feature you'd like us to add? 😊
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  🐞 Bug
+                                                  What was the incorrect/unexpected behavior of the app?
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  💥 App Crash
+                                                  What did you do that caused the app to crash?
+                                                  
+                                                  >>> Explain here
+                                                  
+                                                  ♥️ We highly appreciate that you're taking time to write to us.
+                                                  """,
+                                                    to: ["rahulbhalley@icloud.com"])
+                        }
+                        .applyModifiers(fontSize: 18,
+                                        frameSize: (190, 40),
+                                        foregroundColor: .white,
+                                        backgroundColor: .mint)
+                    }
                     
                     // MARK: Blend Slider
                     
@@ -171,75 +243,7 @@ struct ContentView: View {
                                 .padding(.trailing, 10)
                         }
                     }
-                    
-                    // MARK: Enhancement Button
-                    
-                    Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
-                           systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
-                        
-                        DispatchQueue.global(qos: .userInteractive).async {
-                            
-                            // Beginning enhancement process.
-                            isProcessing = true
-                            
-                            // Safely unwrap the image.
-                            guard let image = inputImage else {
-                                print("Image not found.")
-                                return
-                            }
-                            
-                            // Enhance the image.
-                            enhance(inputImage: image, outputImage: &processedImage)
-                            
-                            // Display the processed image.
-                            DispatchQueue.main.async {
-                                
-                                // Enhancement is completed.
-                                isProcessing = false
-                                
-                                // Image is now enhanced.
-                                imageEnhanced = true
-                                
-                                // Set the processed image to image view.
-                                imageView = Image(uiImage: processedImage!)
-                            }
-                        }
-                    }
-                           .applyModifiers(fontSize: 18,
-                                           frameSize: (130, 40),
-                                           foregroundColor: .adaptable(light: .black, dark: .white),
-                                           backgroundColor: .adaptable(light: .white, dark: .black))
-                           .padding(.vertical, 10)
-                           .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
-                           .disabled(imageEnhanced || inputImage == nil ? true : false)
                 }
-                
-                Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
-                    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.3 (1)",
-                                            body: """
-                                                  🌱 Feature Request
-                                                  What new feature you'd like us to add? 😊
-                                                  
-                                                  >>> Explain here
-                                                  
-                                                  🐞 Bug
-                                                  What was the incorrect/unexpected behavior of the app?
-                                                  
-                                                  >>> Explain here
-                                                  
-                                                  💥 App Crash
-                                                  What did you do that caused the app to crash?
-                                                  
-                                                  >>> Explain here
-                                                  
-                                                  ♥️ We highly appreciate that you're taking time to write to us.
-                                                  """,
-                                            to: ["rahulbhalley@icloud.com"])
-                }
-                .applyModifiers(fontSize: 18,
-                                frameSize: (190, 40),
-                                foregroundColor: .white,
-                                backgroundColor: .mint)
                 
                 // MARK: Enable the following code for first App Store release.
                 
