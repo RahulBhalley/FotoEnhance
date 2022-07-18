@@ -173,7 +173,7 @@ struct ContentView: View {
                                                      alpha: blendValue)
                                 
                                 // Resize processed image as input image.
-                                blendedImage = blendedImage?.resize(image.size)
+                                blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
                                 
                                 // Display the processed image.
                                 DispatchQueue.main.async {
@@ -262,7 +262,7 @@ struct ContentView: View {
                                                          alpha: blendValue)
                                     
                                     // Resize blended image as input image.
-                                    blendedImage = blendedImage?.resize(image.size)
+                                    blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
                                     
                                     // Display the processed image.
                                     DispatchQueue.main.async {
@@ -436,14 +436,11 @@ extension ContentView {
     
     /// Loads the image from either photo library or camera.
     func loadImage() {
-        guard var inputImage = inputImage else {
+        guard let inputImage = inputImage else {
             return
         }
         
-        // Downscale the image.
-        inputImage = inputImage.resizeLargerSideTo(length: 512)
-        
-        enhancedImage = inputImage
+        blendedImage = inputImage
         imageView = Image(uiImage: inputImage)
     }
     
@@ -478,5 +475,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.light)
+            //.previewInterfaceOrientation(.landscapeLeft)
     }
 }
