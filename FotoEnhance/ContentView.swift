@@ -28,6 +28,7 @@ struct ContentView: View {
     @State private var showingAlert = false
     @State private var showingSubscription = false
     @State private var imageEnhanced = false
+    @State private var isProcessing = false
     
     var body: some View {
         ZStack {
@@ -112,21 +113,26 @@ struct ContentView: View {
                 }
                 
                 if inputImage != nil {
-                    imageView?
-                        .applyModifiers()
-                        .onLongPressGesture(minimumDuration: 0.0001,
-                                            perform: {
-                            DispatchQueue.global(qos: .userInteractive).async {
-                                imageView = Image(uiImage: processedImage!)
-                                //print("long press.")
-                            }
-                        },
-                                            onPressingChanged: { (isChanged: Bool) in
-                            if isChanged {
-                                imageView = Image(uiImage: inputImage!)
-                                //print("Press changed.")
-                            }
-                        })
+                    ZStack {
+                        imageView?
+                            .applyModifiers()
+                            .onLongPressGesture(minimumDuration: 0.0001,
+                                                perform: {
+                                DispatchQueue.global(qos: .userInteractive).async {
+                                    imageView = Image(uiImage: processedImage!)
+                                    //print("long press.")
+                                }
+                            },
+                                                onPressingChanged: { (isChanged: Bool) in
+                                if isChanged {
+                                    imageView = Image(uiImage: inputImage!)
+                                    //print("Press changed.")
+                                }
+                            })
+                        if isProcessing {
+                            EnhancementProgressView()
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -134,27 +140,33 @@ struct ContentView: View {
                 Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
                        systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
                     
-                    // Safely unwrap the image.
-                    guard let image = inputImage else {
-                        print("Image not found.")
-                        return
-                    }
-                    
-                    // Resize the input image.
-                    /*if image.isAnySideGreaterThan(length: 512) {
-                     image = image.resizeLargerSideTo(length: 512)
-                     }*/
-                    
-                    // Make image super resolution.
-                    enhance(inputImage: image, outputImage: &processedImage)
-                    
-                    // Display the user input image.
                     DispatchQueue.global(qos: .userInteractive).async {
-                        imageView = Image(uiImage: processedImage!)
+                        
+                        // Beginning enhancement process.
+                        isProcessing = true
+                        
+                        // Safely unwrap the image.
+                        guard let image = inputImage else {
+                            print("Image not found.")
+                            return
+                        }
+                        
+                        // Enhance the image.
+                        enhance(inputImage: image, outputImage: &processedImage)
+                        
+                        // Display the processed image.
+                        DispatchQueue.main.async {
+                            
+                            // Enhancement is completed.
+                            isProcessing = false
+                            
+                            // Image is now enhanced.
+                            imageEnhanced = true
+                            
+                            // Set the processed image to image view.
+                            imageView = Image(uiImage: processedImage!)
+                        }
                     }
-                    
-                    // Image is now enhanced.
-                    imageEnhanced = true
                 }
                        .applyModifiers(fontSize: 18,
                                        frameSize: (130, 40),
@@ -259,11 +271,17 @@ func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
         }
         outputImage = imageFromPixelBuffer(pixelBuffer: observation.pixelBuffer)!
         
+        // Blend the input and enhanced images.
+        blend(image1: inputImage.resize(CGSize(width: 2048, height: 2048)),
+              image2: outputImage!,
+              alpha: 0.8,
+              outputImage: &outputImage)
+        
         // Resize to original image aspect ratio.
         //outputImage = outputImage?.resizeLargerSideTo(length: 4096, aspectRatioOfImage: inputImage)
         let downScaledInputImage = inputImage.resizeLargerSideTo(length: 2048)
-        let newWidth = downScaledInputImage.size.width * 4
-        let newHeight = downScaledInputImage.size.height * 4
+        let newWidth = downScaledInputImage.size.width// * 4
+        let newHeight = downScaledInputImage.size.height// * 4
         print(inputImage512x512.size)
         print(downScaledInputImage.size)
         outputImage = outputImage?.resize(CGSize(width: newWidth, height: newHeight))
