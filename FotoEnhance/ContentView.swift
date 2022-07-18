@@ -29,6 +29,7 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var showingAlert = false
     @State private var showingSubscription = false
+    @State private var showingFeedbackRequest = false
     @State private var imageEnhanced = false
     @State private var isProcessing = false
     @State private var blendValue: Float = 50
@@ -86,7 +87,11 @@ struct ContentView: View {
                         Spacer()
                         
                         Button("Save", systemImage: SFSymbolName(rawValue: "square.and.arrow.down")!) {
+                            // Save the image.
                             saveImage()
+                            
+                            // Now present a feedback request popover.
+                            showingFeedbackRequest = true
                         }
                         .applyModifiers(fontSize: 16,
                                         frameSize: (100, 40),
@@ -94,6 +99,9 @@ struct ContentView: View {
                                         backgroundColor: .adaptable(light: .white, dark: .black))
                         .brightness(colorScheme == .light ? (!imageEnhanced || isProcessing ? -0.3 : 0.0) : (!imageEnhanced || isProcessing ? 0.3 : 0.0))
                         .disabled(!imageEnhanced || isProcessing ? true : false)
+                        .popover(isPresented: $showingFeedbackRequest) {
+                            FeedbackRequestView()
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -194,7 +202,7 @@ struct ContentView: View {
                                                foregroundColor: .adaptable(light: .black, dark: .white),
                                                backgroundColor: .adaptable(light: .white, dark: .black))
                                .padding(.vertical, 10)
-                               .brightness(colorScheme == .light ? (imageEnhanced || isProcessing || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
+                               .brightness(colorScheme == .light ? (imageEnhanced || isProcessing || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || isProcessing || inputImage == nil ? 0.3 : 0.0))
                                .disabled(imageEnhanced || isProcessing || inputImage == nil ? true : false)
                         
                         // MARK: Feedback Button
@@ -239,7 +247,7 @@ struct ContentView: View {
                         }
                         ValueSlider(value: $blendValue,
                                     in: 0...100,
-                                    step: 10) { isEdited in
+                                    step: 5) { isEdited in
                             
                             if oldBlendValue != blendValue { // We don't need multiple same values.
                                 

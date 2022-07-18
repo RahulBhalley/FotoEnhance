@@ -20,6 +20,7 @@
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
 		C78A72222885220100E95B64 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = C78A72212885220100E95B64 /* Sliders */; };
 		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
+		C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */; };
 		C7DEDF432884700000F77CB5 /* Blend.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF422884700000F77CB5 /* Blend.mlmodel */; };
 		C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */; };
 		C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */ = {isa = PBXBuildFile; productRef = C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */; };
@@ -39,6 +40,7 @@
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RealESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
+		C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRequestView.swift; sourceTree = "<group>"; };
 		C7DEDF422884700000F77CB5 /* Blend.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend.mlmodel; sourceTree = "<group>"; };
 		C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancementProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				C72D6E16287D46A40090D794 /* ImageHelpers */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
+				C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */,
 				C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */,
 				C72475B0288117FC0023EE0B /* EmailHelper.swift */,
 				C72D6E14287D46950090D794 /* SubscriptionView.swift */,
@@ -203,6 +206,7 @@
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
 				C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */,
 				C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */,
+				C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */,
 				C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */,
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
