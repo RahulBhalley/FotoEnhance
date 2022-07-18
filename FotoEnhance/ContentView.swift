@@ -8,6 +8,7 @@
 import CoreML
 import CoreGraphics
 import Foundation
+import Sliders
 import SwiftUI
 import SwiftUIX
 import Vision
@@ -29,6 +30,7 @@ struct ContentView: View {
     @State private var showingSubscription = false
     @State private var imageEnhanced = false
     @State private var isProcessing = false
+    @State private var blendValue: Float = 50
     
     var body: some View {
         ZStack {
@@ -137,47 +139,83 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
-                       systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
+                VStack {
                     
-                    DispatchQueue.global(qos: .userInteractive).async {
-                        
-                        // Beginning enhancement process.
-                        isProcessing = true
-                        
-                        // Safely unwrap the image.
-                        guard let image = inputImage else {
-                            print("Image not found.")
-                            return
-                        }
-                        
-                        // Enhance the image.
-                        enhance(inputImage: image, outputImage: &processedImage)
-                        
-                        // Display the processed image.
-                        DispatchQueue.main.async {
-                            
-                            // Enhancement is completed.
-                            isProcessing = false
-                            
-                            // Image is now enhanced.
-                            imageEnhanced = true
-                            
-                            // Set the processed image to image view.
-                            imageView = Image(uiImage: processedImage!)
+                    // MARK: Blend Slider
+                    
+                    HStack {
+                        Text("Enhancement")
+                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                            .padding(.leading)
+                            .padding(.bottom, 25)
+                        VStack {
+                            ValueSlider(value: $blendValue,
+                                        in: 0...100,
+                                        step: 1)
+                            .valueSliderStyle(
+                                HorizontalValueSliderStyle(track: Capsule()
+                                    .frame(height: 5)
+                                    .foregroundColor(imageEnhanced ? .mint : .gray),
+                                                           thumb: Capsule()
+                                    .frame(width: 16)
+                                    .foregroundColor(.white)
+                                    .shadow(radius: 6)
+                                )
+                            )
+                            .padding(.leading, 10)
+                            .padding(.trailing, 20)
+                            .frame(height: 40)
+                            .disabled(imageEnhanced ? false : true)
+                            Text("\(Int(blendValue))")
+                                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                .padding(.trailing, 10)
                         }
                     }
+                    
+                    // MARK: Enhancement Button
+                    
+                    Button(imageEnhanced ? EnhancementStatus.enhanced.rawValue : EnhancementStatus.notEnhanced.rawValue,
+                           systemImage: SFSymbolName(rawValue: "wand.and.stars")!) {
+                        
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            
+                            // Beginning enhancement process.
+                            isProcessing = true
+                            
+                            // Safely unwrap the image.
+                            guard let image = inputImage else {
+                                print("Image not found.")
+                                return
+                            }
+                            
+                            // Enhance the image.
+                            enhance(inputImage: image, outputImage: &processedImage)
+                            
+                            // Display the processed image.
+                            DispatchQueue.main.async {
+                                
+                                // Enhancement is completed.
+                                isProcessing = false
+                                
+                                // Image is now enhanced.
+                                imageEnhanced = true
+                                
+                                // Set the processed image to image view.
+                                imageView = Image(uiImage: processedImage!)
+                            }
+                        }
+                    }
+                           .applyModifiers(fontSize: 18,
+                                           frameSize: (130, 40),
+                                           foregroundColor: .adaptable(light: .black, dark: .white),
+                                           backgroundColor: .adaptable(light: .white, dark: .black))
+                           .padding(.vertical, 10)
+                           .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
+                           .disabled(imageEnhanced || inputImage == nil ? true : false)
                 }
-                       .applyModifiers(fontSize: 18,
-                                       frameSize: (130, 40),
-                                       foregroundColor: .adaptable(light: .black, dark: .white),
-                                       backgroundColor: .adaptable(light: .white, dark: .black))
-                       .padding(.vertical, 10)
-                       .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
-                       .disabled(imageEnhanced || inputImage == nil ? true : false)
                 
                 Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
-                    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.2 (1)",
+                    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.3 (1)",
                                             body: """
                                                   🌱 Feature Request
                                                   What new feature you'd like us to add? 😊

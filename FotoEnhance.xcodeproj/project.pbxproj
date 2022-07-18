@@ -18,6 +18,7 @@
 		C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E19287D46CF0090D794 /* ImagePicker.swift */; };
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
+		C78A72222885220100E95B64 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = C78A72212885220100E95B64 /* Sliders */; };
 		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
 		C7DEDF432884700000F77CB5 /* Blend.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF422884700000F77CB5 /* Blend.mlmodel */; };
 		C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */; };
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78A72222885220100E95B64 /* Sliders in Frameworks */,
 				C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */,
 				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
 			);
@@ -135,6 +137,7 @@
 			packageProductDependencies = (
 				C72D6E12287D466D0090D794 /* SwiftUIX */,
 				C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */,
+				C78A72212885220100E95B64 /* Sliders */,
 			);
 			productName = FotoEnhance;
 			productReference = C72D6E00287D46210090D794 /* FotoEnhance.app */;
@@ -167,6 +170,7 @@
 			packageReferences = (
 				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
+				C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			productRefGroup = C72D6E01287D46210090D794 /* Products */;
 			projectDirPath = "";
@@ -421,6 +425,14 @@
 				kind = branch;
 			};
 		};
+		C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
@@ -436,6 +448,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		C78A72212885220100E95B64 /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
 		};
 		C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */ = {
 			isa = XCSwiftPackageProductDependency;
