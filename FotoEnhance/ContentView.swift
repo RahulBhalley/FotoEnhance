@@ -24,13 +24,15 @@ struct ContentView: View {
     
     @State var imageView: Image?
     @State private var inputImage: UIImage?
-    @State private var processedImage: UIImage?
+    @State private var enhancedImage: UIImage?
+    @State private var blendedImage: UIImage?
     @State private var showingImagePicker = false
     @State private var showingAlert = false
     @State private var showingSubscription = false
     @State private var imageEnhanced = false
     @State private var isProcessing = false
     @State private var blendValue: Float = 50
+    @State private var oldBlendValue: Float = 50
     
     var body: some View {
         ZStack {
@@ -41,7 +43,7 @@ struct ContentView: View {
                 
                 // Background image.
                 if let inputImage = inputImage {
-                    Image(uiImage: processedImage != nil ? processedImage! : inputImage)
+                    Image(uiImage: enhancedImage != nil ? enhancedImage! : inputImage)
                         .resizable()
                 }
                 
@@ -69,7 +71,7 @@ struct ContentView: View {
                         Button("Library", systemImage: SFSymbolName(rawValue: "camera")!) {
                             showingImagePicker = true
                             imageEnhanced = false
-                            processedImage = nil
+                            enhancedImage = nil
                         }
                         .applyModifiers(fontSize: 16,
                                         frameSize: (100, 40),
@@ -78,6 +80,8 @@ struct ContentView: View {
                         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                             ImagePicker(image: $inputImage, sourceType: .photoLibrary)
                         }
+                        .brightness(colorScheme == .light ? (isProcessing ? -0.3 : 0.0) : (isProcessing ? 0.3 : 0.0))
+                        .disabled(isProcessing ? true : false)
                         
                         Spacer()
                         
@@ -88,8 +92,8 @@ struct ContentView: View {
                                         frameSize: (100, 40),
                                         foregroundColor: .adaptable(light: .black, dark: .white),
                                         backgroundColor: .adaptable(light: .white, dark: .black))
-                        .brightness(colorScheme == .light ? (!imageEnhanced ? -0.3 : 0.0) : (!imageEnhanced ? 0.3 : 0.0))
-                        .disabled(!imageEnhanced ? true : false)
+                        .brightness(colorScheme == .light ? (!imageEnhanced || isProcessing ? -0.3 : 0.0) : (!imageEnhanced || isProcessing ? 0.3 : 0.0))
+                        .disabled(!imageEnhanced || isProcessing ? true : false)
                     }
                     .padding(.horizontal)
                 }
@@ -121,14 +125,16 @@ struct ContentView: View {
                             .onLongPressGesture(minimumDuration: 0.0001,
                                                 perform: {
                                 DispatchQueue.global(qos: .userInteractive).async {
-                                    imageView = Image(uiImage: processedImage!)
+                                    imageView = Image(uiImage: blendedImage!)
                                     //print("long press.")
                                 }
                             },
                                                 onPressingChanged: { (isChanged: Bool) in
                                 if isChanged {
-                                    imageView = Image(uiImage: inputImage!)
-                                    //print("Press changed.")
+                                    DispatchQueue.global(qos: .userInteractive).async {
+                                        imageView = Image(uiImage: inputImage!)
+                                        //print("Press changed.")
+                                    }
                                 }
                             })
                         if isProcessing {
@@ -159,7 +165,15 @@ struct ContentView: View {
                                 }
                                 
                                 // Enhance the image.
-                                enhance(inputImage: image, outputImage: &processedImage)
+                                enhance(inputImage: image, outputImage: &enhancedImage)
+                                
+                                // Once blend after enhancement.
+                                blendedImage = blend(image1: image.resize(CGSize(width: 2048, height: 2048)),
+                                                     image2: enhancedImage!.resize(CGSize(width: 2048, height: 2048)),
+                                                     alpha: blendValue)
+                                
+                                // Resize processed image as input image.
+                                blendedImage = blendedImage?.resize(image.size)
                                 
                                 // Display the processed image.
                                 DispatchQueue.main.async {
@@ -171,7 +185,7 @@ struct ContentView: View {
                                     imageEnhanced = true
                                     
                                     // Set the processed image to image view.
-                                    imageView = Image(uiImage: processedImage!)
+                                    imageView = Image(uiImage: blendedImage!)
                                 }
                             }
                         }
@@ -180,8 +194,8 @@ struct ContentView: View {
                                                foregroundColor: .adaptable(light: .black, dark: .white),
                                                backgroundColor: .adaptable(light: .white, dark: .black))
                                .padding(.vertical, 10)
-                               .brightness(colorScheme == .light ? (imageEnhanced || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
-                               .disabled(imageEnhanced || inputImage == nil ? true : false)
+                               .brightness(colorScheme == .light ? (imageEnhanced || isProcessing || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || inputImage == nil ? 0.3 : 0.0))
+                               .disabled(imageEnhanced || isProcessing || inputImage == nil ? true : false)
                         
                         // MARK: Feedback Button
                         
@@ -215,34 +229,64 @@ struct ContentView: View {
                     
                     // MARK: Blend Slider
                     
-                    HStack {
-                        Text("Enhancement")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            .padding(.leading)
-                            .padding(.bottom, 25)
-                        VStack {
-                            ValueSlider(value: $blendValue,
-                                        in: 0...100,
-                                        step: 1)
-                            .valueSliderStyle(
-                                HorizontalValueSliderStyle(track: Capsule()
-                                    .frame(height: 5)
-                                    .foregroundColor(imageEnhanced ? .mint : .gray),
-                                                           thumb: Capsule()
-                                    .frame(width: 16)
-                                    .foregroundColor(.white)
-                                    .shadow(radius: 6)
-                                )
-                            )
-                            .padding(.leading, 10)
-                            .padding(.trailing, 20)
-                            .frame(height: 40)
-                            .disabled(imageEnhanced ? false : true)
+                    VStack {
+                        HStack {
+                            Text("ENHANCEMENT LEVEL")
+                                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            Spacer()
                             Text("\(Int(blendValue))")
                                 .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                .padding(.trailing, 10)
                         }
+                        ValueSlider(value: $blendValue,
+                                    in: 0...100,
+                                    step: 10) { isEdited in
+                            
+                            if oldBlendValue != blendValue { // We don't need multiple same values.
+                                
+                                // Track new `blendValue`.
+                                oldBlendValue = blendValue
+                                
+                                //print("isEdited: \(isEdited) | value: \(blendValue)")
+                                
+                                DispatchQueue.global(qos: .userInteractive).async {
+                                    
+                                    // Safely unwrap the image.
+                                    guard let image = inputImage else {
+                                        print("Image not found.")
+                                        return
+                                    }
+                                    
+                                    // Blend the image.
+                                    blendedImage = blend(image1: image.resize(CGSize(width: 2048, height: 2048)),
+                                                         image2: enhancedImage!.resize(CGSize(width: 2048, height: 2048)),
+                                                         alpha: blendValue)
+                                    
+                                    // Resize blended image as input image.
+                                    blendedImage = blendedImage?.resize(image.size)
+                                    
+                                    // Display the processed image.
+                                    DispatchQueue.main.async {
+                                        
+                                        // Set the processed image to image view.
+                                        imageView = Image(uiImage: blendedImage!)
+                                    }
+                                }
+                            }
+                        }
+                        .valueSliderStyle(
+                            HorizontalValueSliderStyle(track: Capsule()
+                                .frame(height: 6)
+                                .foregroundColor(imageEnhanced ? .mint : .gray),
+                                                       thumb: Capsule()
+                                .frame(width: 16)
+                                .foregroundColor(.white)
+                                .shadow(radius: 6)
+                            )
+                        )
+                        .frame(height: 40)
+                        .disabled(imageEnhanced ? false : true)
                     }
+                    .padding(.horizontal, 30)
                 }
                 
                 // MARK: Enable the following code for first App Store release.
@@ -313,12 +357,6 @@ func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
         }
         outputImage = imageFromPixelBuffer(pixelBuffer: observation.pixelBuffer)!
         
-        // Blend the input and enhanced images.
-        blend(image1: inputImage.resize(CGSize(width: 2048, height: 2048)),
-              image2: outputImage!,
-              alpha: 0.8,
-              outputImage: &outputImage)
-        
         // Resize to original image aspect ratio.
         //outputImage = outputImage?.resizeLargerSideTo(length: 4096, aspectRatioOfImage: inputImage)
         let downScaledInputImage = inputImage.resizeLargerSideTo(length: 2048)
@@ -356,22 +394,40 @@ func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
 
 func blend(image1: UIImage,
            image2: UIImage,
-           alpha: Float,
-           outputImage: inout UIImage?) {
-    let alpha = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
-    
-    // MLModel configuration.
-    let configuration = MLModelConfiguration()
-    configuration.computeUnits = .all
+           alpha: Float) -> UIImage? {
+
+    // Adjust alpha value.
+    var alpha = alpha / 100.0
+    if alpha < 0.0 {
+        alpha = 0.0
+    } else if alpha > 1.0 {
+        alpha = 1.0
+    }
+    print("alpha: \(alpha)")
     
     do {
+        // MLModel configuration.
+        let configuration = MLModelConfiguration()
+        configuration.computeUnits = .all
+        
+        // Initialize blending model.
         let blendModel = try Blend(configuration: configuration)
-        let input = BlendInput(image1: image1.pixelBuffer!, image2: image2.pixelBuffer!, alpha: alpha)
+        
+        // Initialize input.s
+        let alphaMLMultiArray = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
+        let input = BlendInput(image1: image1.pixelBuffer!,
+                               image2: image2.pixelBuffer!,
+                               alpha: alphaMLMultiArray)
+        
+        // Blend the images.
         let blendedImage = try blendModel.prediction(input: input).blendedImage
-        outputImage = imageFromPixelBuffer(pixelBuffer: blendedImage)
+        
+        // Return the blended image.
+        return imageFromPixelBuffer(pixelBuffer: blendedImage)
     } catch {
         print(error)
     }
+    return image1
 }
 
 // MARK: Instance Methods
@@ -387,7 +443,7 @@ extension ContentView {
         // Downscale the image.
         inputImage = inputImage.resizeLargerSideTo(length: 512)
         
-        processedImage = inputImage
+        enhancedImage = inputImage
         imageView = Image(uiImage: inputImage)
     }
     
@@ -395,7 +451,7 @@ extension ContentView {
     func saveImage() {
         
         // Save the processed photo.
-        guard let processedImage = self.processedImage else {
+        guard let image = self.blendedImage else {
             return
         }
         
@@ -414,7 +470,7 @@ extension ContentView {
         }
         
         // Write the processed image to photo library.
-        imageSaver.writeToPhotoAlbum(image: processedImage)
+        imageSaver.writeToPhotoAlbum(image: image)
     }
 }
 
