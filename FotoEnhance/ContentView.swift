@@ -29,7 +29,7 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var showingAlert = false
     @State private var showingSubscription = false
-    @State private var showingFeedbackRequest = false
+    //@State private var showingFeedbackRequest = false
     @State private var imageEnhanced = false
     @State private var isProcessing = false
     @State private var blendValue: Float = 50
@@ -91,7 +91,7 @@ struct ContentView: View {
                             saveImage()
                             
                             // Now present a feedback request popover.
-                            showingFeedbackRequest = true
+                            //showingFeedbackRequest = true
                         }
                         .applyModifiers(fontSize: 16,
                                         frameSize: (100, 40),
@@ -99,9 +99,9 @@ struct ContentView: View {
                                         backgroundColor: .adaptable(light: .white, dark: .black))
                         .brightness(colorScheme == .light ? (!imageEnhanced || isProcessing ? -0.3 : 0.0) : (!imageEnhanced || isProcessing ? 0.3 : 0.0))
                         .disabled(!imageEnhanced || isProcessing ? true : false)
-                        .popover(isPresented: $showingFeedbackRequest) {
+                        /*.popover(isPresented: $showingFeedbackRequest) {
                             FeedbackRequestView()
-                        }
+                        }*/
                     }
                     .padding(.horizontal)
                 }
