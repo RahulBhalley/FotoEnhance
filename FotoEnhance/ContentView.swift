@@ -22,18 +22,30 @@ struct ContentView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @State var imageView: Image?
+    // MARK: Image Properties
+    
+    @State private var imageView: Image?
     @State private var inputImage: UIImage?
     @State private var enhancedImage: UIImage?
+    @State private var enhancedImage1024: UIImage?
+    @State private var enhancedImage2048: UIImage?
     @State private var blendedImage: UIImage?
+    
+    // MARK: Boolean Properties
+    
     @State private var showingImagePicker = false
     @State private var showingAlert = false
     @State private var showingSubscription = false
     //@State private var showingFeedbackRequest = false
     @State private var imageEnhanced = false
     @State private var isProcessing = false
+    
+    // MARK: Number Properties
+    
     @State private var blendValue: Float = 50
     @State private var oldBlendValue: Float = 50
+    @State private var scale: CGFloat = 1.0
+    @State private var lastScale: CGFloat = 1.0
     
     var body: some View {
         ZStack {
@@ -57,9 +69,9 @@ struct ContentView: View {
             
             VStack {
                 
-                // MARK: Library and Save Buttons
-                
                 ZStack {
+                    
+                    // MARK: Middle FotoEnhance Text
                     
                     if inputImage != nil {
                         Text("FotoEnhance")
@@ -67,8 +79,11 @@ struct ContentView: View {
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .shadow(radius: 10)
                     }
-                    
+                                        
                     HStack {
+
+                        // MARK: Library Button
+
                         Button("Library", systemImage: SFSymbolName(rawValue: "camera")!) {
                             showingImagePicker = true
                             imageEnhanced = false
@@ -85,6 +100,8 @@ struct ContentView: View {
                         .disabled(isProcessing ? true : false)
                         
                         Spacer()
+                        
+                        // MARK: Save Button
                         
                         Button("Save", systemImage: SFSymbolName(rawValue: "square.and.arrow.down")!) {
                             // Save the image.
@@ -108,8 +125,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                // MARK: Image Display View
-                
                 if inputImage == nil {
                     VStack {
                         Text("FotoEnhance")
@@ -128,8 +143,22 @@ struct ContentView: View {
                 
                 if inputImage != nil {
                     ZStack {
+    
+                        // MARK: Image View
+                        
                         imageView?
                             .applyModifiers()
+                            .gesture(MagnificationGesture()
+                                .onChanged { val in
+                                    let delta = val / self.lastScale
+                                    self.lastScale = val
+                                    let newScale = self.scale * delta
+                                    self.scale = newScale
+                                }
+                                .onEnded { _ in
+                                    self.lastScale = 1.0
+                                }
+                            )
                             .onLongPressGesture(minimumDuration: 0.0001,
                                                 perform: {
                                 DispatchQueue.global(qos: .userInteractive).async {
@@ -145,6 +174,9 @@ struct ContentView: View {
                                     }
                                 }
                             })
+                        
+                        // MARK: Enhancement Progress View
+                        
                         if isProcessing {
                             EnhancementProgressView()
                         }
@@ -175,10 +207,15 @@ struct ContentView: View {
                                 // Enhance the image.
                                 enhance(inputImage: image, outputImage: &enhancedImage)
                                 
+                                // Resize `enhancedImage` for performance optimization at the expense of memory.
+                                enhancedImage1024 = enhancedImage?.resize(CGSize(width: 1024, height: 1024))
+                                enhancedImage2048 = enhancedImage?.resize(CGSize(width: 2048, height: 2048))
+                                
                                 // Once blend after enhancement.
                                 blendedImage = blend(image1: image.resize(CGSize(width: 2048, height: 2048)),
-                                                     image2: enhancedImage!.resize(CGSize(width: 2048, height: 2048)),
-                                                     alpha: blendValue)
+                                                     image2: enhancedImage2048!,
+                                                     alpha: blendValue,
+                                                     resolution: 2048)
                                 
                                 // Resize processed image as input image.
                                 blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
@@ -247,14 +284,44 @@ struct ContentView: View {
                         }
                         ValueSlider(value: $blendValue,
                                     in: 0...100,
-                                    step: 5) { isEdited in
+                                    step: 5) { isEditing in
                             
-                            if oldBlendValue != blendValue { // We don't need multiple same values.
+                            // We don't need multiple same values.
+                            if oldBlendValue != blendValue {
                                 
                                 // Track new `blendValue`.
                                 oldBlendValue = blendValue
                                 
-                                //print("isEdited: \(isEdited) | value: \(blendValue)")
+                                DispatchQueue.global(qos: .userInteractive).async {
+                                    
+                                    // Safely unwrap the image.
+                                    guard let image = inputImage else {
+                                        print("Image not found.")
+                                        return
+                                    }
+                                    
+                                    // Blend the image.
+                                    blendedImage = blend(image1: image.resize(CGSize(width: 1024, height: 1024)),
+                                                         image2: enhancedImage1024!,
+                                                         alpha: blendValue,
+                                                         resolution: 1024)
+                                    
+                                    // Resize blended image as input image.
+                                    blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
+                                    
+                                    // Display the processed image.
+                                    DispatchQueue.main.async {
+                                        
+                                        // Set the processed image to image view.
+                                        imageView = Image(uiImage: blendedImage!)
+                                    }
+                                }
+                            }
+                            
+                            // Create full-resolution image when user lifts the finger from slider thumb.
+                            if !isEditing {
+                                
+                                //print("isEditing: \(isEditing) | value: \(blendValue)")
                                 
                                 DispatchQueue.global(qos: .userInteractive).async {
                                     
@@ -266,8 +333,9 @@ struct ContentView: View {
                                     
                                     // Blend the image.
                                     blendedImage = blend(image1: image.resize(CGSize(width: 2048, height: 2048)),
-                                                         image2: enhancedImage!.resize(CGSize(width: 2048, height: 2048)),
-                                                         alpha: blendValue)
+                                                         image2: enhancedImage2048!,
+                                                         alpha: blendValue,
+                                                         resolution: 2048)
                                     
                                     // Resize blended image as input image.
                                     blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
@@ -402,7 +470,8 @@ func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
 
 func blend(image1: UIImage,
            image2: UIImage,
-           alpha: Float) -> UIImage? {
+           alpha: Float,
+           resolution: Int) -> UIImage? {
 
     // Adjust alpha value.
     var alpha = alpha / 100.0
@@ -418,17 +487,36 @@ func blend(image1: UIImage,
         let configuration = MLModelConfiguration()
         configuration.computeUnits = .all
         
-        // Initialize blending model.
-        let blendModel = try Blend(configuration: configuration)
+        // Have to initialize it somehow.
+        var blendedImage = image1.pixelBuffer!
         
-        // Initialize input.s
-        let alphaMLMultiArray = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
-        let input = BlendInput(image1: image1.pixelBuffer!,
-                               image2: image2.pixelBuffer!,
-                               alpha: alphaMLMultiArray)
-        
-        // Blend the images.
-        let blendedImage = try blendModel.prediction(input: input).blendedImage
+        if resolution == 1024 {
+            
+            // Initialize blending model.
+            let blendModel = try Blend1024(configuration: configuration)
+            
+            // Initialize input.s
+            let alphaMLMultiArray = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
+            let input = Blend1024Input(image1: image1.pixelBuffer!,
+                                       image2: image2.pixelBuffer!,
+                                       alpha: alphaMLMultiArray)
+            
+            // Blend the images.
+            blendedImage = try blendModel.prediction(input: input).blendedImage
+        } else if resolution == 2048 {
+            
+            // Initialize blending model.
+            let blendModel = try Blend2048(configuration: configuration)
+            
+            // Initialize input.s
+            let alphaMLMultiArray = MLMultiArray(MLShapedArray<Float>(arrayLiteral: alpha))
+            let input = Blend2048Input(image1: image1.pixelBuffer!,
+                                       image2: image2.pixelBuffer!,
+                                       alpha: alphaMLMultiArray)
+            
+            // Blend the images.
+            blendedImage = try blendModel.prediction(input: input).blendedImage
+        }
         
         // Return the blended image.
         return imageFromPixelBuffer(pixelBuffer: blendedImage)

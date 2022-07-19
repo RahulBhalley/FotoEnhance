@@ -19,9 +19,11 @@
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
 		C78A72222885220100E95B64 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = C78A72212885220100E95B64 /* Sliders */; };
+		C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A57AD72886D59600C141AD /* Blend1024.mlmodel */; };
+		C7A57ADA2886D59600C141AD /* Blend2048.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A57AD82886D59600C141AD /* Blend2048.mlmodel */; };
+		C7A57ADC2886D9BF00C141AD /* Blend512.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A57ADB2886D9BF00C141AD /* Blend512.mlmodel */; };
 		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
 		C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */; };
-		C7DEDF432884700000F77CB5 /* Blend.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF422884700000F77CB5 /* Blend.mlmodel */; };
 		C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */; };
 		C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */ = {isa = PBXBuildFile; productRef = C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */; };
 /* End PBXBuildFile section */
@@ -39,9 +41,11 @@
 		C72D6E1B287D46DF0090D794 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C7A57AD72886D59600C141AD /* Blend1024.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend1024.mlmodel; sourceTree = "<group>"; };
+		C7A57AD82886D59600C141AD /* Blend2048.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend2048.mlmodel; sourceTree = "<group>"; };
+		C7A57ADB2886D9BF00C141AD /* Blend512.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend512.mlmodel; sourceTree = "<group>"; };
 		C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RealESRGAN_8Bit.mlmodel; sourceTree = "<group>"; };
 		C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRequestView.swift; sourceTree = "<group>"; };
-		C7DEDF422884700000F77CB5 /* Blend.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend.mlmodel; sourceTree = "<group>"; };
 		C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancementProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +119,9 @@
 		C72D6E22287D47A70090D794 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				C7DEDF422884700000F77CB5 /* Blend.mlmodel */,
+				C7A57ADB2886D9BF00C141AD /* Blend512.mlmodel */,
+				C7A57AD72886D59600C141AD /* Blend1024.mlmodel */,
+				C7A57AD82886D59600C141AD /* Blend2048.mlmodel */,
 				C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */,
 			);
 			path = MLModels;
@@ -202,16 +208,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
+				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
+				C7A57ADA2886D59600C141AD /* Blend2048.mlmodel in Sources */,
 				C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */,
 				C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */,
+				C7A57ADC2886D9BF00C141AD /* Blend512.mlmodel in Sources */,
 				C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */,
 				C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */,
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
-				C7DEDF432884700000F77CB5 /* Blend.mlmodel in Sources */,
 				C72D6E18287D46B80090D794 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
