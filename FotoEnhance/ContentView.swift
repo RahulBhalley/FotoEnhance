@@ -7,6 +7,7 @@
 
 import CoreML
 import CoreGraphics
+import DeviceKit
 import Foundation
 import Sliders
 import SwiftUI
@@ -38,7 +39,9 @@ struct ContentView: View {
     @State private var showingSubscription = false
     //@State private var showingFeedbackRequest = false
     @State private var imageEnhanced = false
+    @State private var imageSaved = false
     @State private var isProcessing = false
+    @State private var justLaunched = true
     
     // MARK: Number Properties
     
@@ -46,6 +49,16 @@ struct ContentView: View {
     @State private var oldBlendValue: Float = 50
     @State private var scale: CGFloat = 1.0
     @State private var lastScale: CGFloat = 1.0
+    
+    // MARK: Others
+    private let device = Device.current
+    var resolution: Int {
+        if Device.current == .iPhone13 {
+            return 2048
+        } else {
+            return 1024
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -104,8 +117,21 @@ struct ContentView: View {
                         // MARK: Save Button
                         
                         Button("Save", systemImage: SFSymbolName(rawValue: "square.and.arrow.down")!) {
+                            
                             // Save the image.
                             saveImage()
+                            
+                            // Present save image view.
+                            imageSaved = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                                imageSaved = false
+                            }
+                            
+                            // Run haptic feedback.
+                            Haptics.shared.run(.heavy)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+                                Haptics.shared.run(.heavy)
+                            }
                             
                             // Now present a feedback request popover.
                             //showingFeedbackRequest = true
@@ -131,9 +157,12 @@ struct ContentView: View {
                             .font(.system(size: 50, weight: .bold, design: .rounded))
                             .shadow(radius: 10)
                         //Text("A Magical App to Enhance Photos")
-                        Text("Magically Enhance Photos")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            .shadow(radius: 10)
+                        HStack {
+                            Image(systemName: SFSymbolName(rawValue: "wand.and.stars")!)
+                            Text("Magically Enhance Photos")
+                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .shadow(radius: 10)
+                        }
                     }
                 }
                 
@@ -159,27 +188,32 @@ struct ContentView: View {
                                     self.lastScale = 1.0
                                 }
                             )
-                            .onLongPressGesture(minimumDuration: 0.0001,
+                            .onLongPressGesture(minimumDuration: 0.001,
+                                                maximumDistance: 10,
                                                 perform: {
-                                DispatchQueue.global(qos: .userInteractive).async {
                                     imageView = Image(uiImage: blendedImage!)
                                     //print("long press.")
-                                }
+//                                }
                             },
-                                                onPressingChanged: { (isChanged: Bool) in
+                                                onPressingChanged: { isChanged in
                                 if isChanged {
-                                    DispatchQueue.global(qos: .userInteractive).async {
                                         imageView = Image(uiImage: inputImage!)
                                         //print("Press changed.")
-                                    }
+//                                    }
                                 }
                             })
                         
                         // MARK: Enhancement Progress View
                         
-                        if isProcessing {
-                            EnhancementProgressView()
-                        }
+                        EnhancementProgressView()
+                                .opacity(isProcessing ? 1 : 0)
+                                .animation(.linear(duration: 0.125), value: isProcessing)
+                        
+                        // MARK: Image Save View
+                        
+                        ImageSaveView()
+                            .opacity(imageSaved ? 1 : 0)
+                            .animation(.linear(duration: 0.125), value: imageSaved)
                     }
                 }
                 
@@ -269,7 +303,7 @@ struct ContentView: View {
                         .applyModifiers(fontSize: 18,
                                         frameSize: (190, 40),
                                         foregroundColor: .white,
-                                        backgroundColor: .mint)
+                                        backgroundColor: Color(cube256: .sRGB, red: 233, green: 12, blue: 93))
                     }
                     
                     // MARK: Blend Slider
@@ -316,6 +350,9 @@ struct ContentView: View {
                                         imageView = Image(uiImage: blendedImage!)
                                     }
                                 }
+                                
+                                // Run haptic feedback.
+                                Haptics.shared.run(.light)
                             }
                             
                             // Create full-resolution image when user lifts the finger from slider thumb.
@@ -352,7 +389,7 @@ struct ContentView: View {
                         .valueSliderStyle(
                             HorizontalValueSliderStyle(track: Capsule()
                                 .frame(height: 6)
-                                .foregroundColor(imageEnhanced ? .mint : .gray),
+                                .foregroundColor(imageEnhanced ? Color(cube256: .sRGB, red: 233, green: 12, blue: 93) : .gray),
                                                        thumb: Capsule()
                                 .frame(width: 16)
                                 .foregroundColor(.white)
@@ -383,7 +420,43 @@ struct ContentView: View {
                     .shadow(radius: 10)*/
             }
             .padding(.vertical)
+            
+            // MARK: Launch App View
+            
+            LaunchAppView()
+                .opacity(justLaunched ? 1 : 0)
+                .animation(.linear(duration: 0.35), value: justLaunched)
         }
+        .onDisappear {
+            releaseResources()
+        }
+        .onAppear {
+            releaseResources()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                justLaunched = false
+            }
+        }
+    }
+}
+
+// MARK: Reset Methods
+
+extension ContentView {
+    
+    /// Resets the blend function-related state properties to default.
+    func resetBlendValues() {
+        self.blendValue = 50.0
+        self.oldBlendValue = 50.0
+    }
+    
+    func releaseResources() {
+        self.inputImage = nil
+        self.enhancedImage = nil
+        self.enhancedImage1024 = nil
+        self.enhancedImage2048 = nil
+        self.blendedImage = nil
+        self.imageView = nil
     }
 }
 
@@ -532,6 +605,7 @@ extension ContentView {
     
     /// Loads the image from either photo library or camera.
     func loadImage() {
+        
         guard let inputImage = inputImage else {
             return
         }
@@ -569,8 +643,11 @@ extension ContentView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .preferredColorScheme(.light)
-            //.previewInterfaceOrientation(.landscapeLeft)
+        Group {
+            ContentView()
+            ContentView()
+                .preferredColorScheme(.dark)
+            //    .environment(\.locale, Locale(identifier: "ar"))
+        }
     }
 }

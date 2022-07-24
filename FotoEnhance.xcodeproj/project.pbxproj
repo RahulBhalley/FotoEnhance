@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
+		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
+		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
 		C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */; };
 		C72D6E06287D46210090D794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E05287D46210090D794 /* ContentView.swift */; };
 		C72D6E08287D46260090D794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72D6E07287D46260090D794 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 		C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E19287D46CF0090D794 /* ImagePicker.swift */; };
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
+		C779D50F288ADB3000FB079C /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = C779D50E288ADB3000FB079C /* DeviceKit */; };
+		C779D511288AFE8200FB079C /* LaunchAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C779D510288AFE8200FB079C /* LaunchAppView.swift */; };
 		C78A72222885220100E95B64 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = C78A72212885220100E95B64 /* Sliders */; };
 		C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A57AD72886D59600C141AD /* Blend1024.mlmodel */; };
 		C7A57ADA2886D59600C141AD /* Blend2048.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A57AD82886D59600C141AD /* Blend2048.mlmodel */; };
@@ -30,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
+		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
+		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		C72D6E00287D46210090D794 /* FotoEnhance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FotoEnhance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoEnhanceApp.swift; sourceTree = "<group>"; };
 		C72D6E05287D46210090D794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +47,7 @@
 		C72D6E1B287D46DF0090D794 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		C72D6E1F287D472E0090D794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C779D510288AFE8200FB079C /* LaunchAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppView.swift; sourceTree = "<group>"; };
 		C7A57AD72886D59600C141AD /* Blend1024.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend1024.mlmodel; sourceTree = "<group>"; };
 		C7A57AD82886D59600C141AD /* Blend2048.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend2048.mlmodel; sourceTree = "<group>"; };
 		C7A57ADB2886D9BF00C141AD /* Blend512.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Blend512.mlmodel; sourceTree = "<group>"; };
@@ -55,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78A72222885220100E95B64 /* Sliders in Frameworks */,
+				C779D50F288ADB3000FB079C /* DeviceKit in Frameworks */,
 				C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */,
 				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
 			);
@@ -63,6 +71,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C72C4698288CA5FD000A6ABC /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */,
+				C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */,
+				C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */,
+				C779D510288AFE8200FB079C /* LaunchAppView.swift */,
+				C72D6E14287D46950090D794 /* SubscriptionView.swift */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
 		C72D6DF7287D46210090D794 = {
 			isa = PBXGroup;
 			children = (
@@ -84,13 +104,11 @@
 			children = (
 				C72D6E1F287D472E0090D794 /* Info.plist */,
 				C72D6E22287D47A70090D794 /* MLModels */,
-				C72D6E16287D46A40090D794 /* ImageHelpers */,
+				C72D6E16287D46A40090D794 /* Helpers */,
+				C72C4698288CA5FD000A6ABC /* VIews */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
-				C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */,
-				C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */,
-				C72475B0288117FC0023EE0B /* EmailHelper.swift */,
-				C72D6E14287D46950090D794 /* SubscriptionView.swift */,
+				C72C4699288D12AE000A6ABC /* Haptics.swift */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
 				C72D6E09287D46260090D794 /* Preview Content */,
 			);
@@ -105,15 +123,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C72D6E16287D46A40090D794 /* ImageHelpers */ = {
+		C72D6E16287D46A40090D794 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C72475B0288117FC0023EE0B /* EmailHelper.swift */,
 				C72D6E17287D46B80090D794 /* Extensions.swift */,
 				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
 				C72D6E1B287D46DF0090D794 /* ImageSaver.swift */,
 				C72D6E1D287D46EF0090D794 /* Toucan.swift */,
 			);
-			path = ImageHelpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C72D6E22287D47A70090D794 /* MLModels */ = {
@@ -147,6 +166,7 @@
 				C72D6E12287D466D0090D794 /* SwiftUIX */,
 				C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */,
 				C78A72212885220100E95B64 /* Sliders */,
+				C779D50E288ADB3000FB079C /* DeviceKit */,
 			);
 			productName = FotoEnhance;
 			productReference = C72D6E00287D46210090D794 /* FotoEnhance.app */;
@@ -180,6 +200,7 @@
 				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 				C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				C779D50D288ADB3000FB079C /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
 			productRefGroup = C72D6E01287D46210090D794 /* Products */;
 			projectDirPath = "";
@@ -209,14 +230,17 @@
 			files = (
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
+				C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
+				C779D511288AFE8200FB079C /* LaunchAppView.swift in Sources */,
 				C7A57ADA2886D59600C141AD /* Blend2048.mlmodel in Sources */,
 				C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */,
 				C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */,
 				C7A57ADC2886D9BF00C141AD /* Blend512.mlmodel in Sources */,
 				C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */,
 				C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */,
+				C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */,
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
@@ -356,7 +380,6 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -389,7 +412,6 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -439,6 +461,14 @@
 				kind = branch;
 			};
 		};
+		C779D50D288ADB3000FB079C /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
@@ -462,6 +492,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		C779D50E288ADB3000FB079C /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C779D50D288ADB3000FB079C /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
 		};
 		C78A72212885220100E95B64 /* Sliders */ = {
 			isa = XCSwiftPackageProductDependency;
