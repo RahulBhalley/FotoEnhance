@@ -1,8 +1,26 @@
 # Release Notes
 The version history of FotoEnhance is listed in this document.
 
-### v0.3 Beta
+### v0.4 Beta
 * App Size: N/A
+* Release Date: N/A
+* Build: 1
+
+#### UI/UX updates
+1. Added logo animation on launch.
+2. Added haptic feedback support for slider and save button. 
+3. Now saved image message will pop up instead of feedback sheet. 
+4. The color theme is also changed. There should be minor changes until we reach App Store with v1.0. :)
+
+#### Performance updates
+1. Improved enhancement slider performance. There should be fewer crashes. :)
+
+Our overall goal with v0.4 is to improve user experience. More functionality updates are on the way! 
+
+Again, thanks for testing FotoEnhance. Please send us your feedback and help steer the app’s features according to your need. :)
+
+### v0.3 Beta
+* App Size: 19.8 MB
 * Release Date: 18-07-2022
 * Build: 1
 
