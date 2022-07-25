@@ -10,7 +10,6 @@
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
-		C72C46AF288DC334000A6ABC /* GFPGAN_CPU.pt in Resources */ = {isa = PBXBuildFile; fileRef = C72C46AE288DC334000A6ABC /* GFPGAN_CPU.pt */; };
 		C72C46B3288DC3A5000A6ABC /* GFPGAN.mm in Sources */ = {isa = PBXBuildFile; fileRef = C72C46B2288DC3A5000A6ABC /* GFPGAN.mm */; };
 		C72C46BE288DC6B7000A6ABC /* libeigen_blas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B5288DC6B7000A6ABC /* libeigen_blas.a */; };
 		C72C46BF288DC6B7000A6ABC /* libtorch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B6288DC6B7000A6ABC /* libtorch.a */; };
@@ -58,7 +57,6 @@
 		C72C46A2288DC2B1000A6ABC /* libeigen_blas.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libeigen_blas.a; path = ../../../pytorch/build_ios/install/lib/libeigen_blas.a; sourceTree = "<group>"; };
 		C72C46A3288DC2B1000A6ABC /* libcpuinfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcpuinfo.a; path = ../../../pytorch/build_ios/install/lib/libcpuinfo.a; sourceTree = "<group>"; };
 		C72C46A4288DC2B1000A6ABC /* libXNNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXNNPACK.a; path = ../../../pytorch/build_ios/install/lib/libXNNPACK.a; sourceTree = "<group>"; };
-		C72C46AE288DC334000A6ABC /* GFPGAN_CPU.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GFPGAN_CPU.pt; sourceTree = "<group>"; };
 		C72C46B1288DC3A5000A6ABC /* FotoEnhance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FotoEnhance-Bridging-Header.h"; sourceTree = "<group>"; };
 		C72C46B2288DC3A5000A6ABC /* GFPGAN.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GFPGAN.mm; sourceTree = "<group>"; };
 		C72C46B4288DC440000A6ABC /* GFPGAN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFPGAN.h; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				C7A57AD72886D59600C141AD /* Blend1024.mlmodel */,
 				C7A57AD82886D59600C141AD /* Blend2048.mlmodel */,
 				C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */,
-				C72C46AE288DC334000A6ABC /* GFPGAN_CPU.pt */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -307,7 +304,6 @@
 			files = (
 				C72D6E0B287D46260090D794 /* Preview Assets.xcassets in Resources */,
 				C72D6E08287D46260090D794 /* Assets.xcassets in Resources */,
-				C72C46AF288DC334000A6ABC /* GFPGAN_CPU.pt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +459,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_BITCODE = NO;
@@ -502,7 +498,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_BITCODE = NO;
