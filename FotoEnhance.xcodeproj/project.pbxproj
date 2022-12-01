@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GFPGAN_8Bit.mlmodel; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
 		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				C7A57AD72886D59600C141AD /* Blend1024.mlmodel */,
 				C7A57AD82886D59600C141AD /* Blend2048.mlmodel */,
 				C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */,
+				0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			files = (
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
+				0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */,
 				C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
