@@ -10,16 +10,6 @@
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
-		C72C46B3288DC3A5000A6ABC /* GFPGAN.mm in Sources */ = {isa = PBXBuildFile; fileRef = C72C46B2288DC3A5000A6ABC /* GFPGAN.mm */; };
-		C72C46BE288DC6B7000A6ABC /* libeigen_blas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B5288DC6B7000A6ABC /* libeigen_blas.a */; };
-		C72C46BF288DC6B7000A6ABC /* libtorch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B6288DC6B7000A6ABC /* libtorch.a */; };
-		C72C46C0288DC6B7000A6ABC /* libXNNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B7288DC6B7000A6ABC /* libXNNPACK.a */; };
-		C72C46C1288DC6B7000A6ABC /* libc10.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B8288DC6B7000A6ABC /* libc10.a */; };
-		C72C46C2288DC6B7000A6ABC /* libcpuinfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46B9288DC6B7000A6ABC /* libcpuinfo.a */; };
-		C72C46C3288DC6B7000A6ABC /* libpytorch_qnnpack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46BA288DC6B7000A6ABC /* libpytorch_qnnpack.a */; };
-		C72C46C4288DC6B7000A6ABC /* libtorch_cpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46BB288DC6B7000A6ABC /* libtorch_cpu.a */; };
-		C72C46C5288DC6B7000A6ABC /* libpthreadpool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46BC288DC6B7000A6ABC /* libpthreadpool.a */; };
-		C72C46C6288DC6B7000A6ABC /* libclog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46BD288DC6B7000A6ABC /* libclog.a */; };
 		C72C46C8288DC84C000A6ABC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46C7288DC84C000A6ABC /* Accelerate.framework */; };
 		C72C46CA288DC854000A6ABC /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C46C9288DC854000A6ABC /* MetalPerformanceShaders.framework */; };
 		C72D6E04287D46210090D794 /* FotoEnhanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */; };
@@ -57,9 +47,6 @@
 		C72C46A2288DC2B1000A6ABC /* libeigen_blas.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libeigen_blas.a; path = ../../../pytorch/build_ios/install/lib/libeigen_blas.a; sourceTree = "<group>"; };
 		C72C46A3288DC2B1000A6ABC /* libcpuinfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcpuinfo.a; path = ../../../pytorch/build_ios/install/lib/libcpuinfo.a; sourceTree = "<group>"; };
 		C72C46A4288DC2B1000A6ABC /* libXNNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXNNPACK.a; path = ../../../pytorch/build_ios/install/lib/libXNNPACK.a; sourceTree = "<group>"; };
-		C72C46B1288DC3A5000A6ABC /* FotoEnhance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FotoEnhance-Bridging-Header.h"; sourceTree = "<group>"; };
-		C72C46B2288DC3A5000A6ABC /* GFPGAN.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GFPGAN.mm; sourceTree = "<group>"; };
-		C72C46B4288DC440000A6ABC /* GFPGAN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GFPGAN.h; sourceTree = "<group>"; };
 		C72C46B5288DC6B7000A6ABC /* libeigen_blas.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libeigen_blas.a; path = ../../../pytorch/build_ios_arm/install/lib/libeigen_blas.a; sourceTree = "<group>"; };
 		C72C46B6288DC6B7000A6ABC /* libtorch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtorch.a; path = ../../../pytorch/build_ios_arm/install/lib/libtorch.a; sourceTree = "<group>"; };
 		C72C46B7288DC6B7000A6ABC /* libXNNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXNNPACK.a; path = ../../../pytorch/build_ios_arm/install/lib/libXNNPACK.a; sourceTree = "<group>"; };
@@ -98,15 +85,6 @@
 			files = (
 				C72C46C8288DC84C000A6ABC /* Accelerate.framework in Frameworks */,
 				C72C46CA288DC854000A6ABC /* MetalPerformanceShaders.framework in Frameworks */,
-				C72C46C1288DC6B7000A6ABC /* libc10.a in Frameworks */,
-				C72C46C6288DC6B7000A6ABC /* libclog.a in Frameworks */,
-				C72C46C2288DC6B7000A6ABC /* libcpuinfo.a in Frameworks */,
-				C72C46BE288DC6B7000A6ABC /* libeigen_blas.a in Frameworks */,
-				C72C46C5288DC6B7000A6ABC /* libpthreadpool.a in Frameworks */,
-				C72C46C3288DC6B7000A6ABC /* libpytorch_qnnpack.a in Frameworks */,
-				C72C46C4288DC6B7000A6ABC /* libtorch_cpu.a in Frameworks */,
-				C72C46BF288DC6B7000A6ABC /* libtorch.a in Frameworks */,
-				C72C46C0288DC6B7000A6ABC /* libXNNPACK.a in Frameworks */,
 				C78A72222885220100E95B64 /* Sliders in Frameworks */,
 				C779D50F288ADB3000FB079C /* DeviceKit in Frameworks */,
 				C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */,
@@ -156,16 +134,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C72C46B0288DC36C000A6ABC /* TorchBridge */ = {
-			isa = PBXGroup;
-			children = (
-				C72C46B2288DC3A5000A6ABC /* GFPGAN.mm */,
-				C72C46B4288DC440000A6ABC /* GFPGAN.h */,
-				C72C46B1288DC3A5000A6ABC /* FotoEnhance-Bridging-Header.h */,
-			);
-			path = TorchBridge;
-			sourceTree = "<group>";
-		};
 		C72D6DF7287D46210090D794 = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +158,6 @@
 				C72D6E22287D47A70090D794 /* MLModels */,
 				C72D6E16287D46A40090D794 /* Helpers */,
 				C72C4698288CA5FD000A6ABC /* VIews */,
-				C72C46B0288DC36C000A6ABC /* TorchBridge */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
 				C72C4699288D12AE000A6ABC /* Haptics.swift */,
@@ -330,7 +297,6 @@
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
-				C72C46B3288DC3A5000A6ABC /* GFPGAN.mm in Sources */,
 				C72D6E18287D46B80090D794 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +431,6 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../pytorch/build_ios_arm/install/include\"";
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -478,13 +443,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../pytorch/build_ios_arm/install/lib\"";
 				MARKETING_VERSION = 0.4;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "FotoEnhance/TorchBridge/FotoEnhance-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -504,7 +467,6 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../pytorch/build_ios_arm/install/include\"";
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -517,13 +479,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../pytorch/build_ios_arm/install/lib\"";
 				MARKETING_VERSION = 0.4;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "FotoEnhance/TorchBridge/FotoEnhance-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
