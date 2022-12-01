@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */; };
+		0223A1C62939137700F4926E /* Enhance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C52939137700F4926E /* Enhance.swift */; };
+		0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C7293913F500F4926E /* AddWatermark.swift */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GFPGAN_8Bit.mlmodel; sourceTree = "<group>"; };
+		0223A1C52939137700F4926E /* Enhance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enhance.swift; sourceTree = "<group>"; };
+		0223A1C7293913F500F4926E /* AddWatermark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWatermark.swift; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
 		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				C72C4698288CA5FD000A6ABC /* VIews */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
+				0223A1C52939137700F4926E /* Enhance.swift */,
+				0223A1C7293913F500F4926E /* AddWatermark.swift */,
 				C72C4699288D12AE000A6ABC /* Haptics.swift */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
 				C72D6E09287D46260090D794 /* Preview Content */,
@@ -284,8 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */,
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
+				0223A1C62939137700F4926E /* Enhance.swift in Sources */,
 				0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */,
 				C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,

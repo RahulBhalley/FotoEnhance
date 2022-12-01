@@ -239,7 +239,7 @@ struct ContentView: View {
                                 }
                                 
                                 // Enhance the image.
-                                enhance(inputImage: image, outputImage: &enhancedImage)
+                                enhanceImage(inputImage: image, outputImage: &enhancedImage)
                                 
                                 // Resize `enhancedImage` for performance optimization at the expense of memory.
                                 enhancedImage1024 = enhancedImage?.resize(CGSize(width: 1024, height: 1024))
@@ -253,6 +253,9 @@ struct ContentView: View {
                                 
                                 // Resize processed image as input image.
                                 blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
+                                
+                                // Enhance the face.
+                                enhanceFace(inputImage: image, outputImage: &enhancedImage)
                                 
                                 // Display the processed image.
                                 DispatchQueue.main.async {
@@ -461,85 +464,6 @@ extension ContentView {
 }
 
 // MARK: Functions
-
-func enhance(inputImage: UIImage, outputImage: inout UIImage?) {
-    
-    let inputImage512x512 = inputImage.resize(CGSize(width: 512, height: 512))
-    //let originalImageSize = inputImage.size
-    print("image size: \(inputImage512x512.size)")
-    
-    do {
-        
-        // Configuration for MLModel.
-        let configuration = MLModelConfiguration()
-        configuration.computeUnits = .all
-        
-        // Initialize the model.
-        //let superResolutionModel = try AESRGAN_8Bit(configuration: configuration)
-        //let vnCoremlModel = try VNCoreMLModel(for: AESRGAN_8Bit(configuration: configuration).model)
-        let vnCoreMlRequest = VNCoreMLRequest(model: try VNCoreMLModel(for: RealESRGAN_8Bit(configuration: configuration).model))
-        
-        let startTime = Date().timeIntervalSince1970
-        /*let prediction = try superResolutionModel
-         .prediction(lowResolutionImage: image.pixelBuffer!)
-         ._4xHighResolutionImage
-         processedImage = imageFromPixelBuffer(pixelBuffer: prediction)
-         */
-        guard let pixelBuffer = inputImage512x512.pixelBuffer else {
-            print("Couldn't get the pixelbuffer.")
-            return
-        }
-        let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
-        try requestHandler.perform([vnCoreMlRequest])
-        let endTime = Date().timeIntervalSince1970
-        print("Inference took \(endTime - startTime) seconds.")
-        
-        /*if let observation = vnCoreMlRequest.results?.first as? VNPixelBufferObservation {
-         print("The observation was found.")
-         outputImage = imageFromPixelBuffer(pixelBuffer: observation.pixelBuffer)!
-         }*/
-        //print("outputImage size: \(outputImage!.size)")
-        
-        guard let observation = vnCoreMlRequest.results?.first as? VNPixelBufferObservation else {
-            print("The observation was not found.")
-            return
-        }
-        outputImage = imageFromPixelBuffer(pixelBuffer: observation.pixelBuffer)!
-        
-        // Resize to original image aspect ratio.
-        //outputImage = outputImage?.resizeLargerSideTo(length: 4096, aspectRatioOfImage: inputImage)
-        let downScaledInputImage = inputImage.resizeLargerSideTo(length: 2048)
-        let newWidth = downScaledInputImage.size.width// * 4
-        let newHeight = downScaledInputImage.size.height// * 4
-        print(inputImage512x512.size)
-        print(downScaledInputImage.size)
-        outputImage = outputImage?.resize(CGSize(width: newWidth, height: newHeight))
-        
-        // MARK: Add watermark to the processed image.
-        
-        // Remove the watermark if user have subscription.
-        /*let backgroundImage = outputImage
-        let watermarkImage = UIImage(named: "Watermark")!
-        
-        let size = backgroundImage!.size
-        let scale = backgroundImage!.scale
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        backgroundImage!.draw(in: CGRect(x: 0,
-                                         y: 0,
-                                         width: size.width,
-                                         height: size.height))
-        watermarkImage.draw(in: CGRect(x: 100,
-                                       y: size.height - (100 + 200),
-                                       width: 200,
-                                       height: 200))
-        
-        outputImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()*/
-    } catch {
-        print(error)
-    }
-}
 
 func blend(image1: UIImage,
            image2: UIImage,
