@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 
+@discardableResult
 func faceDetectedAndBoundingBoxes(in inputImage: inout UIImage) -> (Bool, [CGRect]) {
     
     // Create a request handler.
