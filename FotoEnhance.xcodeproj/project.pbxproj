@@ -11,6 +11,7 @@
 		0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C7293913F500F4926E /* AddWatermark.swift */; };
 		024724322939BF06006586CD /* EnhanceFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724312939BF06006586CD /* EnhanceFace.swift */; };
 		024724342939BF11006586CD /* EnhanceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724332939BF11006586CD /* EnhanceImage.swift */; };
+		02472439293A0A39006586CD /* DetectFaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02472438293A0A39006586CD /* DetectFaces.swift */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
@@ -44,6 +45,7 @@
 		024724312939BF06006586CD /* EnhanceFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhanceFace.swift; sourceTree = "<group>"; };
 		024724332939BF11006586CD /* EnhanceImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhanceImage.swift; sourceTree = "<group>"; };
 		024724352939C81B006586CD /* FotoEnhance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FotoEnhance.entitlements; sourceTree = "<group>"; };
+		02472438293A0A39006586CD /* DetectFaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectFaces.swift; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
 		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -107,6 +109,8 @@
 		0247242D2939BE91006586CD /* DeepLearning */ = {
 			isa = PBXGroup;
 			children = (
+				C72D6E22287D47A70090D794 /* DLModels */,
+				02472438293A0A39006586CD /* DetectFaces.swift */,
 				024724312939BF06006586CD /* EnhanceFace.swift */,
 				024724332939BF11006586CD /* EnhanceImage.swift */,
 			);
@@ -178,7 +182,6 @@
 				0223A1C7293913F500F4926E /* AddWatermark.swift */,
 				C72C4699288D12AE000A6ABC /* Haptics.swift */,
 				0247242D2939BE91006586CD /* DeepLearning */,
-				C72D6E22287D47A70090D794 /* DLModels */,
 				C72D6E16287D46A40090D794 /* Helpers */,
 				C72C4698288CA5FD000A6ABC /* VIews */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
@@ -306,6 +309,7 @@
 				024724322939BF06006586CD /* EnhanceFace.swift in Sources */,
 				0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */,
 				024724342939BF11006586CD /* EnhanceImage.swift in Sources */,
+				02472439293A0A39006586CD /* DetectFaces.swift in Sources */,
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
 				0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */,
