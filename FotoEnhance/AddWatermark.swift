@@ -5,6 +5,7 @@
 //  Created by Rahul Bhalley on 01/12/22.
 //
 
+/// Adds a watermark to photo.
 func addWatermark() {
     
     // Remove the watermark if user have subscription.
