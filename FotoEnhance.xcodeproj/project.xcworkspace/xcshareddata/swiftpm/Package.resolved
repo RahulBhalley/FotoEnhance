@@ -5,26 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "8e2432f99915c6aa03d73b50152bf64dc87d0813",
-        "version" : "4.6.1"
-      }
-    },
-    {
-      "identity" : "permissionsswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jevonmao/PermissionsSwiftUI",
-      "state" : {
-        "revision" : "8b0b2e6b4ddf52d0d41f5f7b06e139f498f84e6b",
-        "version" : "1.5.6"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect",
-      "state" : {
-        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
-        "version" : "0.1.4"
+        "revision" : "d37e70cb2646666dcf276d7d3d4a9760a41ff8a6",
+        "version" : "4.9.0"
       }
     },
     {
@@ -32,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/spacenation/swiftui-sliders",
       "state" : {
-        "revision" : "5ba8614462a7ed4bd47a93fbca6c281599f74337",
-        "version" : "2.0.0"
+        "revision" : "d5a7d856655d5c91f891c2b69d982c30fd5c7bdf",
+        "version" : "2.1.0"
       }
     },
     {
@@ -42,7 +24,7 @@
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
         "branch" : "master",
-        "revision" : "1e2b15a685d4d84bf25b34e6c058811e2824d7c1"
+        "revision" : "ec2c0719f048d7294749cb2e29df7560133ef09a"
       }
     }
   ],

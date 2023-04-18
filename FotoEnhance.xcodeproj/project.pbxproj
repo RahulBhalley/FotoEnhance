@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C3293912FD00F4926E /* GFPGAN_8Bit.mlmodel */; };
 		0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C7293913F500F4926E /* AddWatermark.swift */; };
-		024724322939BF06006586CD /* EnhanceFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724312939BF06006586CD /* EnhanceFace.swift */; };
 		024724342939BF11006586CD /* EnhanceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724332939BF11006586CD /* EnhanceImage.swift */; };
 		02472439293A0A39006586CD /* DetectFaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02472438293A0A39006586CD /* DetectFaces.swift */; };
+		02C420BD29EDCA0500141C90 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C420BC29EDCA0500141C90 /* Global.swift */; };
+		02D4C7C8293AFE400084AF1D /* Extensions+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
@@ -23,7 +23,7 @@
 		C72D6E0B287D46260090D794 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72D6E0A287D46260090D794 /* Preview Assets.xcassets */; };
 		C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = C72D6E12287D466D0090D794 /* SwiftUIX */; };
 		C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E14287D46950090D794 /* SubscriptionView.swift */; };
-		C72D6E18287D46B80090D794 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E17287D46B80090D794 /* Extensions.swift */; };
+		C72D6E18287D46B80090D794 /* Extensions+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E17287D46B80090D794 /* Extensions+SwiftUI.swift */; };
 		C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E19287D46CF0090D794 /* ImagePicker.swift */; };
 		C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1B287D46DF0090D794 /* ImageSaver.swift */; };
 		C72D6E1E287D46EF0090D794 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D6E1D287D46EF0090D794 /* Toucan.swift */; };
@@ -36,7 +36,6 @@
 		C7A8A77D2884461500206CF8 /* RealESRGAN_8Bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C7A8A77C2884461500206CF8 /* RealESRGAN_8Bit.mlmodel */; };
 		C7BBAD7B288567F9006DEEB0 /* FeedbackRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BBAD7A288567F9006DEEB0 /* FeedbackRequestView.swift */; };
 		C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEDF44288504A300F77CB5 /* EnhancementProgressView.swift */; };
-		C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */ = {isa = PBXBuildFile; productRef = C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +45,8 @@
 		024724332939BF11006586CD /* EnhanceImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhanceImage.swift; sourceTree = "<group>"; };
 		024724352939C81B006586CD /* FotoEnhance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FotoEnhance.entitlements; sourceTree = "<group>"; };
 		02472438293A0A39006586CD /* DetectFaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectFaces.swift; sourceTree = "<group>"; };
+		02C420BC29EDCA0500141C90 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Foundation.swift"; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
 		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -75,7 +76,7 @@
 		C72D6E07287D46260090D794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C72D6E0A287D46260090D794 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C72D6E14287D46950090D794 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
-		C72D6E17287D46B80090D794 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C72D6E17287D46B80090D794 /* Extensions+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+SwiftUI.swift"; sourceTree = "<group>"; };
 		C72D6E19287D46CF0090D794 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C72D6E1B287D46DF0090D794 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		C72D6E1D287D46EF0090D794 /* Toucan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 				C72C46CA288DC854000A6ABC /* MetalPerformanceShaders.framework in Frameworks */,
 				C78A72222885220100E95B64 /* Sliders in Frameworks */,
 				C779D50F288ADB3000FB079C /* DeviceKit in Frameworks */,
-				C7E822692884564600F85D10 /* PermissionsSwiftUIPhoto in Frameworks */,
 				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +115,15 @@
 				024724332939BF11006586CD /* EnhanceImage.swift */,
 			);
 			path = DeepLearning;
+			sourceTree = "<group>";
+		};
+		02C420BB29EDC9EA00141C90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C72C4699288D12AE000A6ABC /* Haptics.swift */,
+				02C420BC29EDCA0500141C90 /* Global.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C72C4698288CA5FD000A6ABC /* VIews */ = {
@@ -180,8 +189,8 @@
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
 				0223A1C7293913F500F4926E /* AddWatermark.swift */,
-				C72C4699288D12AE000A6ABC /* Haptics.swift */,
 				0247242D2939BE91006586CD /* DeepLearning */,
+				02C420BB29EDC9EA00141C90 /* Models */,
 				C72D6E16287D46A40090D794 /* Helpers */,
 				C72C4698288CA5FD000A6ABC /* VIews */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
@@ -203,10 +212,11 @@
 			isa = PBXGroup;
 			children = (
 				C72475B0288117FC0023EE0B /* EmailHelper.swift */,
-				C72D6E17287D46B80090D794 /* Extensions.swift */,
+				C72D6E17287D46B80090D794 /* Extensions+SwiftUI.swift */,
 				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
 				C72D6E1B287D46DF0090D794 /* ImageSaver.swift */,
 				C72D6E1D287D46EF0090D794 /* Toucan.swift */,
+				02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -241,7 +251,6 @@
 			name = FotoEnhance;
 			packageProductDependencies = (
 				C72D6E12287D466D0090D794 /* SwiftUIX */,
-				C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */,
 				C78A72212885220100E95B64 /* Sliders */,
 				C779D50E288ADB3000FB079C /* DeviceKit */,
 			);
@@ -276,7 +285,6 @@
 			mainGroup = C72D6DF7287D46210090D794;
 			packageReferences = (
 				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 				C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				C779D50D288ADB3000FB079C /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
@@ -306,13 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				024724322939BF06006586CD /* EnhanceFace.swift in Sources */,
 				0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */,
 				024724342939BF11006586CD /* EnhanceImage.swift in Sources */,
 				02472439293A0A39006586CD /* DetectFaces.swift in Sources */,
+				02D4C7C8293AFE400084AF1D /* Extensions+Foundation.swift in Sources */,
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
-				0223A1C4293912FD00F4926E /* GFPGAN_8Bit.mlmodel in Sources */,
+				02C420BD29EDCA0500141C90 /* Global.swift in Sources */,
 				C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,
 				C72D6E1C287D46DF0090D794 /* ImageSaver.swift in Sources */,
@@ -327,7 +335,7 @@
 				C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */,
 				C72D6E1A287D46CF0090D794 /* ImagePicker.swift in Sources */,
 				C72D6E15287D46950090D794 /* SubscriptionView.swift in Sources */,
-				C72D6E18287D46B80090D794 /* Extensions.swift in Sources */,
+				C72D6E18287D46B80090D794 /* Extensions+SwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,13 +464,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FotoEnhance/FotoEnhance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -474,10 +483,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -493,13 +505,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FotoEnhance/FotoEnhance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FotoEnhance/Preview Content\"";
 				DEVELOPMENT_TEAM = 4GB6223CPT;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -511,10 +524,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RahulBhalley.FotoEnhance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -569,14 +585,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,11 +602,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
-		};
-		C7E822682884564600F85D10 /* PermissionsSwiftUIPhoto */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C7E822672884564600F85D10 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIPhoto;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

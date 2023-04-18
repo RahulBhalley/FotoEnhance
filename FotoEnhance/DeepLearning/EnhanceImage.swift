@@ -18,7 +18,7 @@ func enhanceImage(inputImage: UIImage, outputImage: inout UIImage?) {
         let vnCoreMlRequest = VNCoreMLRequest(model: try VNCoreMLModel(for: RealESRGAN_8Bit(configuration: configuration).model))
         
         let startTime = Date().timeIntervalSince1970
-        guard let pixelBuffer = inputImage.pixelBuffer else {
+        guard let pixelBuffer = inputImage.resize(CGSize(width: 512, height: 512)).pixelBuffer else {
             print("\(#function) Couldn't get the pixelbuffer.")
             return
         }
