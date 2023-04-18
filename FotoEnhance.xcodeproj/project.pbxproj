@@ -10,6 +10,12 @@
 		0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C7293913F500F4926E /* AddWatermark.swift */; };
 		024724342939BF11006586CD /* EnhanceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724332939BF11006586CD /* EnhanceImage.swift */; };
 		02472439293A0A39006586CD /* DetectFaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02472438293A0A39006586CD /* DetectFaces.swift */; };
+		02526D9D29EEE878004449C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02526D9C29EEE878004449C1 /* GoogleService-Info.plist */; };
+		02526DA029EEE8DB004449C1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02526D9F29EEE8DB004449C1 /* FirebaseAnalytics */; };
+		02526DA229EEE8DB004449C1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02526DA129EEE8DB004449C1 /* FirebaseCrashlytics */; };
+		02526DA429EEE8DB004449C1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02526DA329EEE8DB004449C1 /* FirebaseMessaging */; };
+		02526DA629EEE8DB004449C1 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 02526DA529EEE8DB004449C1 /* FirebaseRemoteConfig */; };
+		02526DA829EEFA15004449C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02526DA729EEFA15004449C1 /* AppDelegate.swift */; };
 		02C420BD29EDCA0500141C90 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C420BC29EDCA0500141C90 /* Global.swift */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
@@ -44,6 +50,8 @@
 		024724332939BF11006586CD /* EnhanceImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhanceImage.swift; sourceTree = "<group>"; };
 		024724352939C81B006586CD /* FotoEnhance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FotoEnhance.entitlements; sourceTree = "<group>"; };
 		02472438293A0A39006586CD /* DetectFaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectFaces.swift; sourceTree = "<group>"; };
+		02526D9C29EEE878004449C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02526DA729EEFA15004449C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C420BC29EDCA0500141C90 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
@@ -93,8 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02526DA629EEE8DB004449C1 /* FirebaseRemoteConfig in Frameworks */,
+				02526DA429EEE8DB004449C1 /* FirebaseMessaging in Frameworks */,
 				C72C46C8288DC84C000A6ABC /* Accelerate.framework in Frameworks */,
 				C72C46CA288DC854000A6ABC /* MetalPerformanceShaders.framework in Frameworks */,
+				02526DA029EEE8DB004449C1 /* FirebaseAnalytics in Frameworks */,
+				02526DA229EEE8DB004449C1 /* FirebaseCrashlytics in Frameworks */,
 				C78A72222885220100E95B64 /* Sliders in Frameworks */,
 				C779D50F288ADB3000FB079C /* DeviceKit in Frameworks */,
 				C72D6E13287D466E0090D794 /* SwiftUIX in Frameworks */,
@@ -186,14 +198,15 @@
 				024724352939C81B006586CD /* FotoEnhance.entitlements */,
 				C72D6E03287D46210090D794 /* FotoEnhanceApp.swift */,
 				C72D6E05287D46210090D794 /* ContentView.swift */,
-				0223A1C7293913F500F4926E /* AddWatermark.swift */,
 				0247242D2939BE91006586CD /* DeepLearning */,
 				02C420BB29EDC9EA00141C90 /* Models */,
 				C72D6E16287D46A40090D794 /* Helpers */,
 				C72C4698288CA5FD000A6ABC /* VIews */,
 				C72D6E07287D46260090D794 /* Assets.xcassets */,
 				C72D6E1F287D472E0090D794 /* Info.plist */,
+				02526D9C29EEE878004449C1 /* GoogleService-Info.plist */,
 				C72D6E09287D46260090D794 /* Preview Content */,
+				02526DA729EEFA15004449C1 /* AppDelegate.swift */,
 			);
 			path = FotoEnhance;
 			sourceTree = "<group>";
@@ -209,6 +222,7 @@
 		C72D6E16287D46A40090D794 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0223A1C7293913F500F4926E /* AddWatermark.swift */,
 				C72475B0288117FC0023EE0B /* EmailHelper.swift */,
 				C72D6E17287D46B80090D794 /* Extensions+SwiftUI.swift */,
 				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
@@ -250,6 +264,10 @@
 				C72D6E12287D466D0090D794 /* SwiftUIX */,
 				C78A72212885220100E95B64 /* Sliders */,
 				C779D50E288ADB3000FB079C /* DeviceKit */,
+				02526D9F29EEE8DB004449C1 /* FirebaseAnalytics */,
+				02526DA129EEE8DB004449C1 /* FirebaseCrashlytics */,
+				02526DA329EEE8DB004449C1 /* FirebaseMessaging */,
+				02526DA529EEE8DB004449C1 /* FirebaseRemoteConfig */,
 			);
 			productName = FotoEnhance;
 			productReference = C72D6E00287D46210090D794 /* FotoEnhance.app */;
@@ -284,6 +302,7 @@
 				C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				C78A72202885220100E95B64 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				C779D50D288ADB3000FB079C /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C72D6E01287D46210090D794 /* Products */;
 			projectDirPath = "";
@@ -301,6 +320,7 @@
 			files = (
 				C72D6E0B287D46260090D794 /* Preview Assets.xcassets in Resources */,
 				C72D6E08287D46260090D794 /* Assets.xcassets in Resources */,
+				02526D9D29EEE878004449C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02526DA829EEFA15004449C1 /* AppDelegate.swift in Sources */,
 				0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */,
 				024724342939BF11006586CD /* EnhanceImage.swift in Sources */,
 				02472439293A0A39006586CD /* DetectFaces.swift in Sources */,
@@ -557,6 +578,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
@@ -584,6 +613,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		02526D9F29EEE8DB004449C1 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		02526DA129EEE8DB004449C1 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		02526DA329EEE8DB004449C1 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		02526DA529EEE8DB004449C1 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02526D9E29EEE8DB004449C1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		C72D6E12287D466D0090D794 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C72D6E11287D466D0090D794 /* XCRemoteSwiftPackageReference "SwiftUIX" */;

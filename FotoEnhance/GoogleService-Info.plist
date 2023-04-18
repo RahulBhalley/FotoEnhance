@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>253455728088-jaec03siihj4v9qp8me7i0c73rsf8d80.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.253455728088-jaec03siihj4v9qp8me7i0c73rsf8d80</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxi2jv6-8CHJ6Kk4AwRyx6EDlBURecTfE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>253455728088</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.RahulBhalley.FotoEnhance</string>
+	<key>PROJECT_ID</key>
+	<string>fotoenhance-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fotoenhance-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:253455728088:ios:97c72da28e368b621986ad</string>
+</dict>
+</plist>
