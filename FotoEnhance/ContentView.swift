@@ -256,7 +256,7 @@ struct ContentView: View {
                                 blendedImage = blendedImage?.resize(image.resizeLargerSideTo(length: 2048).size)
                                 
                                 // Enhance the face.
-                                enhanceFace(inputImage: enhancedImage!, outputImage: &blendedImage)
+                                //enhanceFace(inputImage: enhancedImage!, outputImage: &blendedImage)
                                 
                                 // Display the processed image.
                                 DispatchQueue.main.async {
