@@ -11,7 +11,6 @@
 		024724342939BF11006586CD /* EnhanceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724332939BF11006586CD /* EnhanceImage.swift */; };
 		02472439293A0A39006586CD /* DetectFaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02472438293A0A39006586CD /* DetectFaces.swift */; };
 		02C420BD29EDCA0500141C90 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C420BC29EDCA0500141C90 /* Global.swift */; };
-		02D4C7C8293AFE400084AF1D /* Extensions+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */; };
 		C72475B1288117FC0023EE0B /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72475B0288117FC0023EE0B /* EmailHelper.swift */; };
 		C72C4697288CA5F4000A6ABC /* ImageSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */; };
 		C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C4699288D12AE000A6ABC /* Haptics.swift */; };
@@ -46,7 +45,6 @@
 		024724352939C81B006586CD /* FotoEnhance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FotoEnhance.entitlements; sourceTree = "<group>"; };
 		02472438293A0A39006586CD /* DetectFaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectFaces.swift; sourceTree = "<group>"; };
 		02C420BC29EDCA0500141C90 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Foundation.swift"; sourceTree = "<group>"; };
 		C72475B0288117FC0023EE0B /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
 		C72C4696288CA5F3000A6ABC /* ImageSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveView.swift; sourceTree = "<group>"; };
 		C72C4699288D12AE000A6ABC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
 				C72D6E1B287D46DF0090D794 /* ImageSaver.swift */,
 				C72D6E1D287D46EF0090D794 /* Toucan.swift */,
-				02D4C7C7293AFE400084AF1D /* Extensions+Foundation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 				0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */,
 				024724342939BF11006586CD /* EnhanceImage.swift in Sources */,
 				02472439293A0A39006586CD /* DetectFaces.swift in Sources */,
-				02D4C7C8293AFE400084AF1D /* Extensions+Foundation.swift in Sources */,
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
 				02C420BD29EDCA0500141C90 /* Global.swift in Sources */,
