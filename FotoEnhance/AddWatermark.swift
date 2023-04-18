@@ -6,8 +6,7 @@
 //
 
 /// Adds a watermark to photo.
-func addWatermark() {
-    
+func addWatermark() {    
     // Remove the watermark if user have subscription.
     /*let backgroundImage = outputImage
     let watermarkImage = UIImage(named: "Watermark")!
