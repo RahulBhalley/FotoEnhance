@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LaunchAppView: View {
     @State private var rotate = false
-    let color1 = Color(cube256: .sRGB, red: 49, green: 0, blue: 18)
-    let color2 = Color(cube256: .sRGB, red: 233, green: 12, blue: 93)
+    let color1 = Color(white: 0.8)
+    let color2 = Color(white: 0.95)
     
     var body: some View {
         ZStack {
