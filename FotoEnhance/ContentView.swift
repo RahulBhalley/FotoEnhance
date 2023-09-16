@@ -541,7 +541,7 @@ extension ContentView {
 }
 
 func showFeedbackEmailComposer() {
-    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.4 (3)",
+    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v\(Global.appVersion)",
                             body: """
                           🌱 Feature Request
                           What new feature you'd like us to add? 😊
