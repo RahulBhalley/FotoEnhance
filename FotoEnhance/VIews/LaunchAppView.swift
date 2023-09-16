@@ -27,7 +27,7 @@ struct LaunchAppView: View {
                     .rotationEffect(.degrees(rotate ? 360 : 0))
                     .animation(Animation.spring().repeatCount(2, autoreverses: true), value: rotate)
                     //.animation(Animation.linear(duration: 0.5).repeatForever(autoreverses: false), value: rotate)
-                /*Text("FotoEnhance")
+                /*Text("Delta")
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundColor(.white)*/
             }

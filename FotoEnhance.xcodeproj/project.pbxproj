@@ -492,6 +492,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Delta;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library to enhance photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -533,6 +534,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FotoEnhance/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Delta;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow FotoEnhance to access photos library to enhance photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

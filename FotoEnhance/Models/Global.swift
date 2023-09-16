@@ -11,7 +11,7 @@ struct Global {
     
     // MARK: App information
     
-    static let appName = "FotoEnhance"
+    static let appName = "Delta"
     static let appPageUrl = URL(string: "https://itunes.apple.com/app/id1633937151")!
     static let appReviewUrl = URL(string: "https://itunes.apple.com/app/id1633937151?action=write-review")!
     static var appVersion: String {

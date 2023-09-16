@@ -87,7 +87,7 @@ struct ContentView: View {
                     // MARK: Middle FotoEnhance Text
                     
                     if inputImage != nil {
-                        Text("FotoEnhance")
+                        Text("Delta")
                             .foregroundColor(.adaptable(light: .black, dark: .white))
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .shadow(radius: 10)
@@ -153,7 +153,7 @@ struct ContentView: View {
                 
                 if inputImage == nil {
                     VStack {
-                        Text("FotoEnhance")
+                        Text("Delta")
                             .font(.system(size: 50, weight: .bold, design: .rounded))
                             .shadow(radius: 10)
                         //Text("A Magical App to Enhance Photos")
