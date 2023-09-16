@@ -279,35 +279,6 @@ struct ContentView: View {
                                .padding(.vertical, 10)
                                .brightness(colorScheme == .light ? (imageEnhanced || isProcessing || inputImage == nil ? -0.3 : 0.0) : (imageEnhanced || isProcessing || inputImage == nil ? 0.3 : 0.0))
                                .disabled(imageEnhanced || isProcessing || inputImage == nil ? true : false)
-                        
-                        // MARK: Feedback Button
-                        
-                        Button("Send Feedback", systemImage: SFSymbolName(rawValue: "square.and.pencil")!) {
-                            EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.4 (3)",
-                                                    body: """
-                                                  🌱 Feature Request
-                                                  What new feature you'd like us to add? 😊
-                                                  
-                                                  [Explain here]
-                                                  
-                                                  🐞 Bug
-                                                  What was the incorrect/unexpected behavior of the app?
-                                                  
-                                                  [Explain here]
-                                                  
-                                                  💥 App Crash
-                                                  What did you do that caused the app to crash?
-                                                  
-                                                  [Explain here]
-                                                  
-                                                  ♥️ We highly appreciate that you're taking time to write to us.
-                                                  """,
-                                                    to: ["rahulbhalley@icloud.com"])
-                        }
-                        .applyModifiers(fontSize: 18,
-                                        frameSize: (190, 40),
-                                        foregroundColor: .white,
-                                        backgroundColor: Color(cube256: .sRGB, red: 233, green: 12, blue: 93))
                     }
                     
                     // MARK: Blend Slider
@@ -441,6 +412,9 @@ struct ContentView: View {
                 justLaunched = false
             }
         }
+        .onShake {
+            showFeedbackEmailComposer()
+        }
     }
 }
 
@@ -564,6 +538,29 @@ extension ContentView {
         // Write the processed image to photo library.
         imageSaver.writeToPhotoAlbum(image: image)
     }
+}
+
+func showFeedbackEmailComposer() {
+    EmailHelper.shared.send(subject: "Feedback on FotoEnhance v0.4 (3)",
+                            body: """
+                          🌱 Feature Request
+                          What new feature you'd like us to add? 😊
+                          
+                          [Explain here]
+                          
+                          🐞 Bug
+                          What was the incorrect/unexpected behavior of the app?
+                          
+                          [Explain here]
+                          
+                          💥 App Crash
+                          What did you do that caused the app to crash?
+                          
+                          [Explain here]
+                          
+                          ♥️ We highly appreciate that you're taking time to write to us.
+                          """,
+                            to: ["hello@instart.ai"])
 }
 
 struct ContentView_Previews: PreviewProvider {

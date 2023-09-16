@@ -10,6 +10,7 @@
 		0223A1C8293913F500F4926E /* AddWatermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223A1C7293913F500F4926E /* AddWatermark.swift */; };
 		024724342939BF11006586CD /* EnhanceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024724332939BF11006586CD /* EnhanceImage.swift */; };
 		02472439293A0A39006586CD /* DetectFaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02472438293A0A39006586CD /* DetectFaces.swift */; };
+		0248DEA32AB632AB0009B4CC /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0248DEA22AB632AB0009B4CC /* ShakeDetector.swift */; };
 		02526D9D29EEE878004449C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02526D9C29EEE878004449C1 /* GoogleService-Info.plist */; };
 		02526DA029EEE8DB004449C1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02526D9F29EEE8DB004449C1 /* FirebaseAnalytics */; };
 		02526DA229EEE8DB004449C1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02526DA129EEE8DB004449C1 /* FirebaseCrashlytics */; };
@@ -50,6 +51,7 @@
 		024724332939BF11006586CD /* EnhanceImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhanceImage.swift; sourceTree = "<group>"; };
 		024724352939C81B006586CD /* FotoEnhance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FotoEnhance.entitlements; sourceTree = "<group>"; };
 		02472438293A0A39006586CD /* DetectFaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectFaces.swift; sourceTree = "<group>"; };
+		0248DEA22AB632AB0009B4CC /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
 		02526D9C29EEE878004449C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02526DA729EEFA15004449C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C420BC29EDCA0500141C90 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				C72D6E17287D46B80090D794 /* Extensions+SwiftUI.swift */,
 				C72D6E19287D46CF0090D794 /* ImagePicker.swift */,
 				C72D6E1B287D46DF0090D794 /* ImageSaver.swift */,
+				0248DEA22AB632AB0009B4CC /* ShakeDetector.swift */,
 				C72D6E1D287D46EF0090D794 /* Toucan.swift */,
 			);
 			path = Helpers;
@@ -337,6 +340,7 @@
 				02472439293A0A39006586CD /* DetectFaces.swift in Sources */,
 				C72D6E06287D46210090D794 /* ContentView.swift in Sources */,
 				C7A57AD92886D59600C141AD /* Blend1024.mlmodel in Sources */,
+				0248DEA32AB632AB0009B4CC /* ShakeDetector.swift in Sources */,
 				02C420BD29EDCA0500141C90 /* Global.swift in Sources */,
 				C72C469A288D12AE000A6ABC /* Haptics.swift in Sources */,
 				C7DEDF45288504A300F77CB5 /* EnhancementProgressView.swift in Sources */,
