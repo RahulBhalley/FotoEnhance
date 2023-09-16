@@ -19,7 +19,7 @@ struct LaunchAppView: View {
                            endPoint: .trailing)
                 .ignoresSafeArea()
             VStack {
-                Image("Logo512")
+                Image("1024")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
