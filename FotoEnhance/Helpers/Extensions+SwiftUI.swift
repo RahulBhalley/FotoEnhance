@@ -86,26 +86,30 @@ extension UIImage {
         return unwrappedPixelBuffer
     }
     
+    /// Calculates the aspect ratio of the image.
+    /// - Returns: The aspect ratio as a CGFloat (width / height).
+    private func aspectRatio() -> CGFloat {
+        return size.width / size.height
+    }
+
     /// Resizes the image while maintaining its aspect ratio.
     /// - Parameter length: The desired length of the longer side of the image.
     /// - Returns: A resized UIImage.
     func resizeMaintainingAspectRatio(to length: CGFloat) -> UIImage {
-        let size = self.size
-        let aspectRatio = size.width / size.height
+        let ratio = self.aspectRatio()
         
-        var newSize: CGSize
-        if size.width > size.height {
-            newSize = CGSize(width: length, height: length / aspectRatio)
+        let newSize: CGSize
+        if ratio > 1 {
+            // Width is longer
+            newSize = CGSize(width: length, height: length / ratio)
         } else {
-            newSize = CGSize(width: length * aspectRatio, height: length)
+            // Height is longer or square
+            newSize = CGSize(width: length * ratio, height: length)
         }
         
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        return renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: newSize))
-        }
+        return resize(to: newSize)
     }
-    
+
     /// Resizes the image to the specified size.
     /// - Parameter size: The desired size for the image.
     /// - Returns: A resized UIImage.
@@ -115,7 +119,26 @@ extension UIImage {
             self.draw(in: CGRect(origin: .zero, size: size))
         }
     }
-    
+
+    /// Resizes the image to match the aspect ratio of another image.
+    /// - Parameter otherImage: The image whose aspect ratio should be matched.
+    /// - Returns: A resized UIImage with the same aspect ratio as the other image.
+    func resizeToMatchAspectRatio(of otherImage: UIImage) -> UIImage {
+        let targetRatio = otherImage.aspectRatio()
+        let currentRatio = self.aspectRatio()
+        
+        let newSize: CGSize
+        if currentRatio > targetRatio {
+            // Current image is wider, adjust width
+            newSize = CGSize(width: size.height * targetRatio, height: size.height)
+        } else {
+            // Current image is taller, adjust height
+            newSize = CGSize(width: size.width, height: size.width / targetRatio)
+        }
+        
+        return resize(to: newSize)
+    }
+
     /// Checks if either side of the image is greater than the specified length.
     /// - Parameter length: The length to compare against.
     /// - Returns: True if either side is greater than the specified length, false otherwise.
