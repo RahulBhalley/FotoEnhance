@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-// MARK: SwiftUI
+// MARK: - SwiftUI Extensions
 
 extension Image {
-    func applyModifiers() -> some View {
+    /// Applies common modifiers to create a consistent image style.
+    /// - Returns: A modified view with standard styling applied.
+    func applyStandardStyle() -> some View {
         self
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -21,13 +23,20 @@ extension Image {
 }
 
 extension Button {
-    func applyModifiers(fontSize: CGFloat,
-                        frameSize: (CGFloat, CGFloat),
-                        foregroundColor: Color = .white,
-                        backgroundColor: Color = .black) -> some View {
+    /// Applies common modifiers to create a consistent button style.
+    /// - Parameters:
+    ///   - fontSize: The size of the button's text.
+    ///   - frameSize: A tuple containing the width and height of the button.
+    ///   - foregroundColor: The color of the button's text (default is white).
+    ///   - backgroundColor: The background color of the button (default is black).
+    /// - Returns: A modified view with standard button styling applied.
+    func applyStandardStyle(fontSize: CGFloat,
+                            frameSize: (width: CGFloat, height: CGFloat),
+                            foregroundColor: Color = .white,
+                            backgroundColor: Color = .black) -> some View {
         self
             .font(.system(size: fontSize, weight: .bold, design: .rounded))
-            .frame(width: frameSize.0, height: frameSize.1)
+            .frame(width: frameSize.width, height: frameSize.height)
             .foregroundColor(foregroundColor)
             .background(backgroundColor)
             .cornerRadius(8)
@@ -35,99 +44,82 @@ extension Button {
     }
 }
 
-// MARK: UIKit
-
-public func imageFromPixelBuffer(pixelBuffer: CVPixelBuffer) -> UIImage? {
-    let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-    guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else { return nil }
-    let image = UIImage(cgImage: cgImage)
-    return image
-}
+// MARK: - UIKit Extensions
 
 extension UIImage {
-    
-    public var pixelBuffer: CVPixelBuffer? {
-        guard let cgImage = cgImage else { return nil }
-        let frameSize = CGSize(width: cgImage.width, height: cgImage.height)
-        var pixelBuffer:CVPixelBuffer? = nil
+    /// Converts the UIImage to a CVPixelBuffer.
+    /// - Returns: A CVPixelBuffer representation of the image, or nil if conversion fails.
+    func toCVPixelBuffer() -> CVPixelBuffer? {
+        let frameSize = CGSize(width: size.width, height: size.height)
+        var pixelBuffer: CVPixelBuffer?
         let status = CVPixelBufferCreate(kCFAllocatorDefault,
                                          Int(frameSize.width),
                                          Int(frameSize.height),
                                          kCVPixelFormatType_32BGRA,
                                          nil,
                                          &pixelBuffer)
-        if status != kCVReturnSuccess { return nil }
-        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags.init(rawValue: 0))
-        let data = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        
+        guard status == kCVReturnSuccess, let unwrappedPixelBuffer = pixelBuffer else {
+            print("Failed to create CVPixelBuffer")
+            return nil
+        }
+        
+        CVPixelBufferLockBaseAddress(unwrappedPixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        let data = CVPixelBufferGetBaseAddress(unwrappedPixelBuffer)
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
-        let context = CGContext(data: data,
-                                width: Int(frameSize.width),
-                                height: Int(frameSize.height),
-                                bitsPerComponent: 8,
-                                bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!),
-                                space: rgbColorSpace,
-                                bitmapInfo: bitmapInfo.rawValue)
-        context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height))
-        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-        return pixelBuffer
-    }
-    
-    /// Resizes the image with the given larger side, maintaining the aspect ratio.
-    /// - Parameter length: The length of larger size.
-    /// - Returns: Resized image.
-    func resizeLargerSideTo(length: CGFloat) -> UIImage {
-        var resultImage = UIImage()
-        if self.size.width == self.size.height {
-            resultImage = Toucan(image: self).resize(CGSize(width: length, height: length)).uiImage!
-        } else if self.size.height > self.size.width {
-            //let pixelsCondition = (self.size.height / (self.size.height / length)) * (self.size.width / (self.size.height / length)) >= (700 * 1_000)
-            //let length: CGFloat = pixelsCondition ? 900 : 1_000
-            let ratio = self.size.height / length
-            let newWidth = self.size.width / ratio
-            let newHeight = self.size.height / ratio
-            resultImage = Toucan(image: self).resizeByScaling(CGSize(width: newWidth, height: newHeight)).uiImage!
-        } else if self.size.width > self.size.height {
-            let ratio = self.size.width / length
-            let newWidth = self.size.width / ratio
-            let newHeight = self.size.height / ratio
-            resultImage = Toucan(image: self).resizeByScaling(CGSize(width: newWidth, height: newHeight)).uiImage!
-        }
-        return resultImage
-    }
-    
-    func resize(_ size: CGSize) -> UIImage {
-        Toucan(image: self).resizeByScaling(size).uiImage!
-    }
-    
-    func resizeLargerSideTo(length: CGFloat = 2048, aspectRatioOfImage originalImage: UIImage) -> UIImage {
-        //var resultImage = UIImage()
-        var ratio: CGFloat = 1.0
-        if originalImage.size.height > originalImage.size.width {
-            ratio = length / originalImage.size.height
-        } else if originalImage.size.width > originalImage.size.height {
-            ratio = originalImage.size.width / length
-        } else if originalImage.size.width == originalImage.size.height {
-            ratio = 1.0
+        
+        guard let context = CGContext(data: data,
+                                      width: Int(frameSize.width),
+                                      height: Int(frameSize.height),
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: CVPixelBufferGetBytesPerRow(unwrappedPixelBuffer),
+                                      space: rgbColorSpace,
+                                      bitmapInfo: bitmapInfo.rawValue) else {
+            print("Failed to create CGContext")
+            return nil
         }
         
-        // Resize while maintaining the aspect ratio of original image.
-        let newWidth = originalImage.size.width / ratio
-        let newHeight = originalImage.size.height / ratio
+        context.draw(cgImage!, in: CGRect(origin: .zero, size: frameSize))
+        CVPixelBufferUnlockBaseAddress(unwrappedPixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
         
-        print("newWidth: \(newWidth)")
-        print("newHeight: \(newHeight)")
-        
-        //resultImage = Toucan(image: self).resizeByScaling(CGSize(width: newWidth, height: newHeight)).uiImage!
-        return Toucan(image: self).resizeByScaling(CGSize(width: newWidth, height: newHeight)).uiImage!
-        
-        //return resultImage
+        return unwrappedPixelBuffer
     }
-}
-
-extension UIImage {
     
-    public func isAnySideGrefaterThan(length: CGFloat) -> Bool {
-        self.size.height > length || self.size.width > length
+    /// Resizes the image while maintaining its aspect ratio.
+    /// - Parameter length: The desired length of the longer side of the image.
+    /// - Returns: A resized UIImage.
+    func resizeMaintainingAspectRatio(to length: CGFloat) -> UIImage {
+        let size = self.size
+        let aspectRatio = size.width / size.height
+        
+        var newSize: CGSize
+        if size.width > size.height {
+            newSize = CGSize(width: length, height: length / aspectRatio)
+        } else {
+            newSize = CGSize(width: length * aspectRatio, height: length)
+        }
+        
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
+    
+    /// Resizes the image to the specified size.
+    /// - Parameter size: The desired size for the image.
+    /// - Returns: A resized UIImage.
+    func resize(to size: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+    
+    /// Checks if either side of the image is greater than the specified length.
+    /// - Parameter length: The length to compare against.
+    /// - Returns: True if either side is greater than the specified length, false otherwise.
+    func isAnySideGreaterThan(_ length: CGFloat) -> Bool {
+        return self.size.height > length || self.size.width > length
     }
 }

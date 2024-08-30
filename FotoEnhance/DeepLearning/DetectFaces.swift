@@ -8,78 +8,83 @@
 import UIKit
 import Vision
 
+/// Detects faces in the given image and returns their bounding boxes.
+/// - Parameter image: The input image to process.
+/// - Returns: A tuple containing a boolean indicating if faces were detected and an array of face bounding boxes.
 @discardableResult
-func faceDetectedAndBoundingBoxes(in inputImage: inout UIImage) -> (Bool, [CGRect]) {
+func detectFacesAndBoundingBoxes(in image: inout UIImage) -> (faceDetected: Bool, boundingBoxes: [CGRect]) {
+    // Create a request handler
+    guard let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image.pixelBuffer!, orientation: .up) else {
+        NSLog("Failed to create VNImageRequestHandler in \(#function)")
+        return (false, [])
+    }
     
-    // Create a request handler.
-    let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: inputImage.pixelBuffer!,
-                                                    orientation: .up)
-    
-    // Create a face detection request.
+    // Create a face detection request
     let request = VNDetectFaceRectanglesRequest()
     
-    // Perform the request.
+    // Perform the request
     do {
         try imageRequestHandler.perform([request])
     } catch {
-        print(error)
+        NSLog("Face detection failed in \(#function): \(error)")
+        return (false, [])
     }
     
-    // Return the result.
+    // Process the results
     guard let results = request.results else {
-        NSLog("In `\(#function)`, request.results is nil.")
+        NSLog("No results from face detection in \(#function)")
         return (false, [])
     }
     
     for (index, face) in results.enumerated() {
-        print("face \(index).")
-        print("normalizedCoordinates: \(face.boundingBox).")
-        print("newCoordinates: \(transformNormalizedToImageCoordinates(from: face.boundingBox, to: inputImage.size)).")
+        NSLog("Face \(index) detected at normalized coordinates: \(face.boundingBox)")
+        NSLog("Face \(index) detected at image coordinates: \(transformNormalizedToImageCoordinates(from: face.boundingBox, to: image.size))")
     }
-    guard let cgImage = inputImage.cgImage else { return (false, []) }
-    if !results.isEmpty {
-        // Get more area around detected face to cover hair as well.
-        var faceCoordinates = transformNormalizedToImageCoordinates(from: results[0].boundingBox, to: inputImage.size)
-        print("BEFORE")
-        print("faceCoordinates.origin: \(faceCoordinates.origin)")
-        print("faceCoordinates.size: \(faceCoordinates.size)")
-        
-        let moreAreaPercent = 0.4
-        
-        // Calculate new origin and size.
-        let newX = faceCoordinates.minX - (faceCoordinates.width * moreAreaPercent)
-        let newY = faceCoordinates.minY - (faceCoordinates.height * moreAreaPercent)
-        let newWidth = faceCoordinates.width + 2 * (faceCoordinates.width * moreAreaPercent)
-        let newHeight = faceCoordinates.height + 2 * (faceCoordinates.height * moreAreaPercent)
-        
-        // Set new origin nd size.
-        faceCoordinates.origin = CGPoint(x: newX, y: newY)
-        faceCoordinates.size = CGSize(width: newWidth, height: newHeight)
-        print("AFTER")
-        print("faceCoordinates.origin: \(faceCoordinates.origin)")
-        print("faceCoordinates.size: \(faceCoordinates.size)")
-        print("image.size: \(inputImage.size)")
-        
-        inputImage = UIImage(cgImage: cgImage.cropping(to: faceCoordinates)!)
-        print(inputImage.size)
+    
+    guard let cgImage = image.cgImage, !results.isEmpty else { return (false, []) }
+    
+    // Expand the detected face area
+    let faceCoordinates = expandFaceArea(for: results[0].boundingBox, in: image.size)
+    
+    NSLog("Expanded face coordinates: origin = \(faceCoordinates.origin), size = \(faceCoordinates.size)")
+    NSLog("Image size: \(image.size)")
+    
+    if let croppedImage = cgImage.cropping(to: faceCoordinates) {
+        image = UIImage(cgImage: croppedImage)
+        NSLog("Cropped image size: \(image.size)")
     }
     
     let boundingBoxes = results.map { $0.boundingBox }
-    return (results.isEmpty ? false : true, boundingBoxes)
+    return (!results.isEmpty, boundingBoxes)
 }
 
-/// Transform the normalized Vision coordinates to image coordinates.
+/// Expands the given face area by a certain percentage.
 /// - Parameters:
-///   - normalizedCoordinates: The normalized coordinates.
-///   - imageCoordinates: The image coordinates.
-/// - Returns: The normalized coordinates transformed to image coordinates.
+///   - boundingBox: The normalized coordinates of the face.
+///   - imageSize: The size of the original image.
+/// - Returns: The expanded face coordinates in image space.
+private func expandFaceArea(for boundingBox: CGRect, in imageSize: CGSize) -> CGRect {
+    let expandFactor = 0.4
+    let imageCoordinates = transformNormalizedToImageCoordinates(from: boundingBox, to: imageSize)
+    
+    let newX = imageCoordinates.minX - (imageCoordinates.width * expandFactor)
+    let newY = imageCoordinates.minY - (imageCoordinates.height * expandFactor)
+    let newWidth = imageCoordinates.width * (1 + 2 * expandFactor)
+    let newHeight = imageCoordinates.height * (1 + 2 * expandFactor)
+    
+    return CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
+}
+
+/// Transforms normalized Vision coordinates to image coordinates.
+/// - Parameters:
+///   - normalizedCoordinates: The normalized coordinates from Vision.
+///   - imageSize: The size of the image.
+/// - Returns: The coordinates transformed to image space.
 func transformNormalizedToImageCoordinates(from normalizedCoordinates: CGRect, to imageSize: CGSize) -> CGRect {
-    let imageCoordinates = CGRect(origin: CGPoint(x: 0, y: 0), size: imageSize)
-    var newCoordinates = CGRect()
-    newCoordinates.size.width = normalizedCoordinates.size.width * imageCoordinates.size.width
-    newCoordinates.size.height = normalizedCoordinates.size.height * imageCoordinates.size.height
-    newCoordinates.origin.y = (imageCoordinates.height) - (imageCoordinates.height * normalizedCoordinates.origin.y)
-    newCoordinates.origin.y = newCoordinates.origin.y - newCoordinates.size.height
-    newCoordinates.origin.x = normalizedCoordinates.origin.x * imageCoordinates.size.width
-    return newCoordinates
+    var imageCoordinates = CGRect()
+    imageCoordinates.size.width = normalizedCoordinates.width * imageSize.width
+    imageCoordinates.size.height = normalizedCoordinates.height * imageSize.height
+    imageCoordinates.origin.y = (imageSize.height) - (imageSize.height * normalizedCoordinates.origin.y) - imageCoordinates.height
+    imageCoordinates.origin.x = normalizedCoordinates.origin.x * imageSize.width
+    return imageCoordinates
 }

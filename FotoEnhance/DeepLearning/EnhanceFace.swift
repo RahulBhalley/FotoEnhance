@@ -8,35 +8,42 @@
 import UIKit
 import Vision
 
-/// Enhances the faces and pastes them back in their original location.
-/// - Parameters:
-///   - inputImage: The input image in which faces are the be enhanced.
-///   - outputImage: The output image in which faces are enhanced.
-func enhanceFace(inputImage: UIImage, outputImage: inout UIImage?) {
+/// Enhances faces in an image using the GFPGAN model.
+/// - Parameter inputImage: The input image containing faces to be enhanced.
+/// - Returns: An optional `UIImage` with enhanced faces, or `nil` if the process fails.
+func enhanceFaces(in inputImage: UIImage) -> UIImage? {
     do {
-        // Configuration for MLModel.
+        // Configure MLModel to use CPU only
         let configuration = MLModelConfiguration()
         configuration.computeUnits = .cpuOnly
         
-        // Initialize the model.
-        let vnCoreMlRequest = VNCoreMLRequest(model: try VNCoreMLModel(for: GFPGAN_8Bit(configuration: configuration).model))
+        // Initialize the GFPGAN model
+        let gfpganModel = try VNCoreMLModel(for: GFPGAN_8Bit(configuration: configuration).model)
+        let request = VNCoreMLRequest(model: gfpganModel)
         
-        let startTime = Date().timeIntervalSince1970
+        // Measure inference time
+        let startTime = Date()
+        
         guard let pixelBuffer = inputImage.pixelBuffer else {
-            print("\(#function) Couldn't get the pixelbuffer.")
-            return
+            print("Failed to create pixel buffer from input image.")
+            return nil
         }
-        let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
-        try requestHandler.perform([vnCoreMlRequest])
-        let endTime = Date().timeIntervalSince1970
-        print("[Face Enhancement] Inference took \(endTime - startTime) seconds.")
         
-        guard let observation = vnCoreMlRequest.results?.first as? VNPixelBufferObservation else {
-            print("The observation was not found.")
-            return
+        // Perform face enhancement
+        try VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up).perform([request])
+        
+        let inferenceTime = Date().timeInterval(since: startTime)
+        print("[Face Enhancement] Inference took \(inferenceTime) seconds.")
+        
+        // Extract the enhanced image from the observation
+        guard let enhancedPixelBuffer = (request.results?.first as? VNPixelBufferObservation)?.pixelBuffer else {
+            print("Failed to get enhanced pixel buffer from observation.")
+            return nil
         }
-        outputImage = imageFromPixelBuffer(pixelBuffer: observation.pixelBuffer)!
+        
+        return UIImage(pixelBuffer: enhancedPixelBuffer)
     } catch {
-        print(error)
+        print("Face enhancement failed: \(error)")
+        return nil
     }
 }
